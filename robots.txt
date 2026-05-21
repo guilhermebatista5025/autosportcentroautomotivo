@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://autosportcentroautomotivo.com.br/sitemap.xml
