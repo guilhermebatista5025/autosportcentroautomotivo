@@ -9,23 +9,29 @@ const { Client, MessageMedia, LocalAuth } = require("whatsapp-web.js");
 // =====================================
 const client = new Client({
   authStrategy: new LocalAuth(),
-  puppeteer: {
-    headless: true,
 
-    executablePath:
-      "C:/Program Files/Google/Chrome/Application/chrome.exe",
-
-    args: [
-      "--no-sandbox",
-      "--disable-setuid-sandbox",
-      "--disable-dev-shm-usage",
-      "--disable-accelerated-2d-canvas",
-      "--disable-gpu",
-      "--window-size=1920,1080",
-      "--single-process",
-      "--no-zygote",
-    ],
+  webVersionCache: {
+    type: "remote",
+    remotePath: "https://raw.githubusercontent.com/wppconnect-team/wa-version/main/html/{version}.html",
   },
+
+  qrMaxRetries: 5,
+
+puppeteer: {
+  headless: "new",
+
+  executablePath:
+    "C:/Program Files/Google/Chrome/Application/chrome.exe",
+
+  args: [
+    "--no-sandbox",
+    "--disable-setuid-sandbox",
+    "--disable-dev-shm-usage",
+    "--disable-accelerated-2d-canvas",
+    "--disable-gpu",
+    "--window-size=1280,720",
+  ],
+},
 });
 
 // =====================================
@@ -333,4 +339,13 @@ client.on("message", async (msg) => {
   } catch (error) {
     console.error("❌ Erro no processamento da mensagem:", error);
   }
+});
+
+// =====================================
+// ENCERRAMENTO DO BOT
+// =====================================
+process.on("SIGINT", async () => {
+  console.log("🛑 Encerrando bot...");
+  await client.destroy();
+  process.exit();
 });
