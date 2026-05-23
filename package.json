@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "express": "^5.2.1",
     "moment-timezone": "^0.5.45",
     "openai": "^4.78.1",
     "puppeteer": "^22.8.2",
