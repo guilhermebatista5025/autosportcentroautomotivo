@@ -980,6 +980,106 @@ app.get("/api/appointments", (req, res) => {
   res.json(completedAppointments);
 });
 
+// Novo endpoint para receber agendamentos realizados via Website
+app.post("/api/appointments", (req, res) => {
+  const { 
+    from, 
+    pushname, 
+    cpf,
+    servico, 
+    veiculo, 
+    placa, 
+    porte, 
+    sujeira, 
+    agendamentoDia, 
+    agendamentoTurno, 
+    agendamentoDataValor, 
+    pagamento, 
+    valorFinal,
+    observacoes
+  } = req.body;
+
+  if (!from || !servico || !veiculo || !pushname) {
+    return res.status(400).json({ success: false, message: "Campos obrigatórios ausentes (from, pushname, servico, veiculo)." });
+  }
+
+  // Formata o número de telefone no padrão do WhatsApp do bot
+  let rawPhone = from.replace(/\D/g, "");
+  if (!rawPhone.startsWith("55")) {
+    rawPhone = "55" + rawPhone;
+  }
+  const formattedPhone = `${rawPhone}@c.us`;
+
+  // 1. Integração com CRM: Verifica/Salva Cliente em db.json
+  if (!userDatabase.clientes) {
+    userDatabase.clientes = {};
+  }
+
+  const veiculoFormatado = {
+    modelo: veiculo,
+    placa: (placa || "N/A").toUpperCase(),
+    porte: porte || "Médio"
+  };
+
+  if (!userDatabase.clientes[formattedPhone]) {
+    // Cliente novo: Cria cadastro
+    userDatabase.clientes[formattedPhone] = {
+      phone: formattedPhone,
+      nome: pushname,
+      cpf: cpf || "N/A",
+      timestamp: new Date().toISOString(),
+      veiculos: [veiculoFormatado]
+    };
+    saveDatabase();
+    console.log(`👤 Novo cliente cadastrado no CRM via Website: ${pushname} (${formattedPhone})`);
+  } else {
+    // Cliente recorrente: Verifica se o veículo já está cadastrado
+    const cliente = userDatabase.clientes[formattedPhone];
+    const jaCadastrado = cliente.veiculos && cliente.veiculos.some(
+      v => v.placa.replace(/\D/g, "") === veiculoFormatado.placa.replace(/\D/g, "")
+    );
+    if (!jaCadastrado) {
+      if (!cliente.veiculos) cliente.veiculos = [];
+      cliente.veiculos.push(veiculoFormatado);
+      saveDatabase();
+      console.log(`🚗 Novo veículo [${veiculoFormatado.modelo}] vinculado ao cliente CRM: ${pushname}`);
+    }
+  }
+
+  // 2. Criação do Agendamento Confirmado no Painel
+  const novoAgendamento = {
+    from: formattedPhone,
+    pushname: pushname,
+    servico: servico,
+    veiculo: `${veiculo} [${(placa || "N/A").toUpperCase()}]`,
+    placa: (placa || "N/A").toUpperCase(),
+    porte: porte || "N/A",
+    sujeira: sujeira || "N/A",
+    agendamentoDia: agendamentoDia || "N/A",
+    agendamentoTurno: agendamentoTurno || "N/A",
+    agendamentoDataValor: agendamentoDataValor || "N/A",
+    pagamento: pagamento || "N/A",
+    valorFinal: valorFinal || 0,
+    observacoes: observacoes || "N/A",
+    timestamp: new Date().toISOString(),
+    respostas: [
+      { 
+        autor: "cliente", 
+        texto: `Agendamento Web realizado com sucesso! Serviços: ${servico}. Carro: ${veiculo} [${placa || "N/A"}]. Período: ${agendamentoDia} (${agendamentoTurno}). Obs: ${observacoes || "Nenhuma"}`, 
+        timestamp: new Date().toISOString() 
+      }
+    ]
+  };
+
+  completedAppointments.push(novoAgendamento);
+  if (completedAppointments.length > 100) {
+    completedAppointments.shift();
+  }
+
+  console.log(`📅 Novo agendamento registrado via WEBSITE para ${pushname}: ${servico} (Valor: R$ ${valorFinal},00)`);
+  res.json({ success: true, message: "Agendamento registrado com sucesso!" });
+});
+
 // Limpa o histórico de agendamentos concluídos
 app.post("/api/appointments/clear", (req, res) => {
   completedAppointments.length = 0;
@@ -1051,7 +1151,17 @@ app.get("/api/logs/stream", (req, res) => {
   });
 });
 
-// Rota padrão para servir o admin frontend
+// Rota para servir a tela de agendamento separada
+app.get("/agendar", (req, res) => {
+  res.sendFile(path.join(__dirname, "public", "agendar.html"));
+});
+
+// Rota para servir o painel administrativo
+app.get("/admin", (req, res) => {
+  res.sendFile(path.join(__dirname, "public", "admin", "index.html"));
+});
+
+// Rota padrão para servir o site institucional
 app.get("/", (req, res) => {
   res.sendFile(path.join(__dirname, "public", "index.html"));
 });

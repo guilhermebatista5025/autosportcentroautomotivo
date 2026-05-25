@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Agendamento de Serviços Estéticos | Auto Sport Centro Automotivo</title>
+  <meta name="description" content="Agende online o polimento técnico, vitrificação de pintura 9H, aplicação de películas PPF e higienização interna do seu veículo na Auto Sport.">
+  <meta name="author" content="Auto Sport Centro Automotivo">
+  <meta name="robots" content="noindex, nofollow">
+
+  <!-- Estilos e Design System Otimizado (Princípios UI/UX Pro Max) -->
+  <link rel="stylesheet" href="css/style.css">
+  
+  <style>
+    /* Estilos Adicionais Exclusivos para a Página de Agendamento */
+    .agendar-page-wrapper {
+      padding-top: 120px;
+      padding-bottom: 96px;
+      min-height: 100dvh;
+      background: radial-gradient(circle at 50% 50%, rgba(37, 99, 235, 0.03) 0%, transparent 100%), var(--bg-page);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      transition: background-color var(--transition-normal);
+    }
+    
+    .agendar-header {
+      margin-bottom: 40px;
+      text-align: center;
+    }
+    
+    .agendar-header h1 {
+      font-family: var(--font-title);
+      font-size: clamp(2rem, 3.5vw, 2.5rem);
+      font-weight: 900;
+      color: var(--text-primary);
+      margin-bottom: 8px;
+    }
+    .agendar-header h1 span {
+      color: var(--color-blue);
+    }
+    
+    .agendar-header p {
+      font-size: 0.95rem;
+      color: var(--text-muted);
+    }
+
+    .simplified-nav-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-family: var(--font-title);
+      font-weight: 700;
+      font-size: 0.9rem;
+      color: var(--text-primary);
+      min-height: 44px;
+      padding: 0 16px;
+      background: var(--bg-alt);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-sm);
+      transition: all var(--transition-fast);
+    }
+    .simplified-nav-btn:hover {
+      background: var(--color-blue);
+      color: #ffffff;
+      border-color: var(--color-blue);
+    }
+    .simplified-nav-btn svg {
+      width: 16px;
+      height: 16px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Link de Acessibilidade para navegação por teclado -->
+  <a href="#main-content" class="skip-link">Ir para o formulário principal</a>
+
+  <!-- ==========================================================================
+       1. SCREEN LOADER PREMIUM
+       ========================================================================== -->
+  <div id="loader" class="loader-wrapper" role="status" aria-live="polite">
+    <div class="loader-logo-container">
+      <div class="loader-logo">AUTO SPORT<span>.</span></div>
+      <div class="loader-bar-bg">
+        <div class="loader-bar-fill"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==========================================================================
+       2. SIMPLIFIED NAVBAR
+       ========================================================================== -->
+  <header id="navbar" class="navbar">
+    <div class="container nav-container">
+      <a href="index.html" class="logo-link" aria-label="Auto Sport Home">
+        <img src="img/logo-autosport.png" alt="Auto Sport Centro Automotivo" class="header-logo-img">
+      </a>
+      
+      <nav aria-label="Navegação de Retorno">
+        <ul style="list-style: none; display: flex; align-items: center; gap: 16px;">
+          <li>
+            <!-- Seletor de Tema (Dark/Light) -->
+            <button id="theme-toggle" class="theme-toggle-btn" aria-label="Alternar tema visual">
+              <!-- Sol -->
+              <svg id="theme-light-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="hidden">
+                <circle cx="12" cy="12" r="5"></circle>
+                <line x1="12" y1="1" x2="12" y2="3"></line>
+                <line x1="12" y1="21" x2="12" y2="23"></line>
+                <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                <line x1="1" y1="12" x2="3" y2="12"></line>
+                <line x1="21" y1="12" x2="23" y2="12"></line>
+                <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+              </svg>
+              <!-- Lua -->
+              <svg id="theme-dark-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+              </svg>
+            </button>
+          </li>
+          <li>
+            <a href="index.html" class="simplified-nav-btn" aria-label="Voltar para a página inicial institucional">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
+              Voltar ao Site
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ==========================================================================
+       3. DEDICATED BOOKING CONTAINER
+       ========================================================================== -->
+  <main id="main-content" class="agendar-page-wrapper" tabindex="-1">
+    <div class="container" style="max-width: 800px; width: 100%;">
+      
+      <header class="agendar-header reveal-on-scroll" style="margin-bottom: 32px; text-align: center;">
+        <h1>Pré-Agendamento <span>Online</span></h1>
+        <p>Configure seu serviço e reserve seu horário exclusivo em poucos passos na Auto Sport.</p>
+      </header>
+
+      <!-- Coluna Centralizada: Formulário de Agendamento Focado -->
+      <div class="agendar-form-container">
+        
+        <!-- Formulário de Agendamento Otimizado (4-Step Engine) -->
+        <div class="simulator-card reveal-on-scroll" id="scheduling-container" style="max-width: 100%; margin: 0; width: 100%;">
+        
+          <!-- Stepper Wizard Premium (4 Etapas) -->
+          <div class="checkout-stepper" aria-label="Progresso da Reserva">
+            <div class="step-indicator active" id="step-indicator-1">
+              <span class="step-num">1</span>
+              <span class="step-text">Serviços</span>
+            </div>
+            <div class="step-line"></div>
+            <div class="step-indicator" id="step-indicator-2">
+              <span class="step-num">2</span>
+              <span class="step-text">Identificação</span>
+            </div>
+            <div class="step-line"></div>
+            <div class="step-indicator" id="step-indicator-3">
+              <span class="step-num">3</span>
+              <span class="step-text">Agenda & Obs</span>
+            </div>
+            <div class="step-line"></div>
+            <div class="step-indicator" id="step-indicator-4">
+              <span class="step-num">4</span>
+              <span class="step-text">Pagamento</span>
+            </div>
+          </div>
+
+          <form id="sim-booking-form" class="booking-form-wizard" novalidate>
+            <!-- Etapa 1: Escolha de Serviços -->
+            <div class="wizard-step active" id="step-1">
+              <!-- Lista de Serviços Dinâmicos -->
+              <div class="sim-group">
+                <span class="sim-group-title">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"></path></svg>
+                  1. Selecione os Serviços Desejados
+                </span>
+                <div class="service-options" id="service-options-container" role="group" aria-label="Serviços Disponíveis">
+                  <!-- Renderizado dinamicamente via JS -->
+                </div>
+              </div>
+
+              <!-- Botões de Navegação Etapa 1 -->
+              <div class="wizard-actions" style="margin-top: 24px;">
+                <button type="button" class="btn btn-accent next-step-btn" data-next="2" style="width: 100%; display: inline-flex; justify-content: center; align-items: center; min-height: 48px;">
+                  Avançar para Identificação
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="margin-left: 8px;"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                </button>
+              </div>
+            </div>
+
+            <!-- Etapa 2: Identificação (Porte + Cadastro) -->
+            <div class="wizard-step" id="step-2">
+              <!-- Porte do Veículo -->
+              <div class="sim-group">
+                <span class="sim-group-title">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M4 11V9a4 4 0 0 1 8 0v2"></path></svg>
+                  2. Selecione o Porte do seu Veículo
+                </span>
+                <div class="car-selectors" role="radiogroup" aria-label="Porte do Veículo">
+                  <button type="button" class="car-btn active" data-type="Pequeno" role="radio" aria-checked="true" aria-selected="true">
+                    <!-- Hatch / Sedan -->
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 17h2c.6 0 1-.4 1-1v-3c0-.9-.7-1.7-1.5-1.9C18.7 10.6 16 10 16 10s-1.3-1.4-2.2-2.3c-.5-.4-1.1-.7-1.8-.7H5c-.6 0-1.1.4-1.4.9l-1.4 2.9A3.7 3.7 0 0 0 2 13v3c0 .6.4 1 1 1h2m10 0a3 3 0 1 1-6 0m6 0a3 3 0 1 0-6 0"></path></svg>
+                    Hatch / Sedan
+                    <span>Compactos e Médios</span>
+                  </button>
+                  <button type="button" class="car-btn" data-type="SUV" role="radio" aria-checked="false" aria-selected="false">
+                    <!-- SUV -->
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="10" width="20" height="8" rx="2" ry="2"></rect><path d="M6 10V6a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v4m-12 8a2 2 0 1 1-4 0m16 0a2 2 0 1 1-4 0"></path></svg>
+                    SUV / Crossover
+                    <span>Utilitários e SUVs Médios</span>
+                  </button>
+                  <button type="button" class="car-btn" data-type="Caminhonete" role="radio" aria-checked="false" aria-selected="false">
+                    <!-- Caminhonete / Picape -->
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 13h10v5m10-5h-8V9H5L2 13m18 5a2 2 0 1 1-4 0m-8 0a2 2 0 1 1-4 0"></path></svg>
+                    Picape / Esportivo
+                    <span>Caminhonetes e Superesportivos</span>
+                  </button>
+                </div>
+              </div>
+
+              <!-- Dados de Cadastro -->
+              <div class="sim-group" style="margin-top: 24px;">
+                <span class="sim-group-title">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+                  3. Identificação do Proprietário & Veículo
+                </span>
+                
+                <div class="booking-fields-grid">
+                  <div class="form-field">
+                    <label for="client-name">Nome Completo *</label>
+                    <input type="text" id="client-name" class="form-input" placeholder="Ex: João da Silva..." required autocomplete="name">
+                    <span id="client-name-error" class="form-error" role="alert">Insira seu nome completo.</span>
+                  </div>
+
+                  <div class="form-field">
+                    <label for="client-phone">WhatsApp para Contato *</label>
+                    <input type="tel" id="client-phone" class="form-input" placeholder="Ex: (27) 99880-3770..." required autocomplete="tel">
+                    <span id="client-phone-error" class="form-error" role="alert">Insira um número de WhatsApp válido.</span>
+                  </div>
+
+                  <div class="form-field">
+                    <label for="client-vehicle">Modelo e Marca do Veículo *</label>
+                    <input type="text" id="client-vehicle" class="form-input" placeholder="Ex: Toyota Corolla Sedan..." required>
+                    <span id="client-vehicle-error" class="form-error" role="alert">Insira o modelo do seu veículo.</span>
+                  </div>
+
+                  <div class="form-field">
+                    <label for="client-plate">Placa do Veículo (Opcional)</label>
+                    <input type="text" id="client-plate" class="form-input" placeholder="Ex: PPU-5090..." style="text-transform: uppercase;" maxlength="8">
+                    <!-- Placa Mercosul Dinâmica Premium -->
+                    <div class="mercosul-plate-wrapper" id="mercosul-plate-display" aria-hidden="true">
+                      <div class="mercosul-plate-header">
+                        <span class="mercosul-header-flag">🇧🇷</span>
+                        <span class="mercosul-header-country">BRASIL</span>
+                        <span class="mercosul-header-logo">⚙️</span>
+                      </div>
+                      <div class="mercosul-plate-body">
+                        <span id="mercosul-plate-text">SUA PLACA</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="form-field full-width">
+                    <label for="client-cpf">CPF (Opcional - Ficha CRM)</label>
+                    <input type="text" id="client-cpf" class="form-input" placeholder="Ex: 123.456.789-00...">
+                  </div>
+                </div>
+              </div>
+
+              <!-- Botões de Navegação Etapa 2 -->
+              <div class="wizard-actions dual-actions" style="margin-top: 24px; display: grid; grid-template-columns: 1fr 2fr; gap: 12px;">
+                <button type="button" class="btn btn-secondary prev-step-btn" data-prev="1" style="width: 100%; display: inline-flex; justify-content: center; align-items: center; min-height: 48px;">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="margin-right: 8px; transform: rotate(180deg);"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                  Voltar para Serviços
+                </button>
+                <button type="button" class="btn btn-accent next-step-btn" data-next="3" style="width: 100%; display: inline-flex; justify-content: center; align-items: center; min-height: 48px;">
+                  Avançar para Agendamento
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="margin-left: 8px;"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                </button>
+              </div>
+            </div>
+
+            <!-- Etapa 3: Dia, Período e Observações -->
+            <div class="wizard-step" id="step-3">
+              <!-- Calendário Interativo & Período -->
+              <div class="sim-group">
+                <span class="sim-group-title">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+                  4. Escolha o Dia e o Período de sua Preferência
+                </span>
+                <div class="calendar-layout-container">
+                  
+                  <!-- Painel do Calendário -->
+                  <div class="calendar-picker-body">
+                    <div class="calendar-header-row">
+                      <h4 id="web-calendar-month-year">Carregando...</h4>
+                      <div class="calendar-arrows">
+                        <button type="button" class="calendar-arrow-btn" id="web-btn-prev-month" aria-label="Mês Anterior">
+                          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"></polyline></svg>
+                        </button>
+                        <button type="button" class="calendar-arrow-btn" id="web-btn-next-month" aria-label="Próximo Mês">
+                          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                        </button>
+                      </div>
+                    </div>
+                    
+                    <div class="calendar-days-grid">
+                      <div class="calendar-weekday">Dom</div>
+                      <div class="calendar-weekday">Seg</div>
+                      <div class="calendar-weekday">Ter</div>
+                      <div class="calendar-weekday">Qua</div>
+                      <div class="calendar-weekday">Qui</div>
+                      <div class="calendar-weekday">Sex</div>
+                      <div class="calendar-weekday">Sáb</div>
+                    </div>
+                    
+                    <div class="calendar-days-grid" id="web-calendar-days-container" style="margin-top: 8px;">
+                      <!-- Dias do Mês Dinâmicos -->
+                    </div>
+                  </div>
+
+                  <!-- Painel do Período -->
+                  <div class="turn-picker-body">
+                    <h4>Período do Atendimento</h4>
+                    <button type="button" class="turn-btn active" data-turn="Manhã (08h - 12h)" role="radio" aria-checked="true">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line></svg>
+                      Manhã (08h às 12h)
+                    </button>
+                    <button type="button" class="turn-btn" data-turn="Tarde (13h - 18h)" role="radio" aria-checked="false">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+                      Tarde (13h às 18h)
+                    </button>
+                  </div>
+
+                </div>
+              </div>
+
+              <!-- Observações Adicionais (Opcional) -->
+              <div class="sim-group" style="margin-top: 24px;">
+                <span class="sim-group-title">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
+                  5. Observações sobre o Veículo (Opcional)
+                </span>
+                <div class="form-field full-width">
+                  <textarea id="client-obs" class="form-textarea" placeholder="Descreva aqui riscos específicos, amassados, se tem película protetora, se deseja detalhe específico ou qualquer observação sobre o carro..."></textarea>
+                </div>
+              </div>
+
+              <!-- Botões de Navegação Etapa 3 -->
+              <div class="wizard-actions dual-actions" style="margin-top: 24px; display: grid; grid-template-columns: 1fr 2fr; gap: 12px;">
+                <button type="button" class="btn btn-secondary prev-step-btn" data-prev="2" style="width: 100%; display: inline-flex; justify-content: center; align-items: center; min-height: 48px;">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="margin-right: 8px; transform: rotate(180deg);"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                  Voltar
+                </button>
+                <button type="button" class="btn btn-accent next-step-btn" data-next="4" style="width: 100%; display: inline-flex; justify-content: center; align-items: center; min-height: 48px;">
+                  Avançar para Pagamento
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="margin-left: 8px;"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                </button>
+              </div>
+            </div>
+
+            <!-- Etapa 4: Resumo & Forma de Pagamento -->
+            <div class="wizard-step" id="step-4">
+              <!-- Exibição dos Valores Tabulares -->
+              <div class="sim-group">
+                <span class="sim-group-title">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2" ry="2"></rect><line x1="12" y1="4" x2="12" y2="20"></line><line x1="2" y1="12" x2="22" y2="12"></line></svg>
+                  6. Resumo do Orçamento Estimado
+                </span>
+                <div class="simulator-output" aria-live="polite" style="margin-bottom: 0;">
+                  <div class="price-row">
+                    <span>Investimento Total Estimado:</span>
+                    <span id="sim-total-price" class="price-total">R$ 0,00</span>
+                  </div>
+                  
+                  <div class="payment-plans">
+                    <div class="plan-item">
+                      <span class="plan-badge">À Vista (PIX 5% OFF)</span>
+                      <span id="pix-price" class="plan-value">R$ 0,00</span>
+                    </div>
+                    
+                    <div class="plan-item">
+                      <span>Ou em até 12x Sem Juros:</span>
+                      <span>12x de <span id="card-price" class="plan-value">R$ 0,00</span></span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Escolha da Forma de Pagamento -->
+              <div class="sim-group" style="margin-top: 24px;">
+                <span class="sim-group-title">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
+                  7. Como deseja realizar o Pagamento?
+                </span>
+                
+                <div class="payment-methods-wrapper">
+                  <!-- Opção 1: Entrega -->
+                  <div class="payment-method-card active" data-method="entrega">
+                    <div class="payment-card-icon">
+                      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+                    </div>
+                    <div class="payment-card-info">
+                      <h5>Pagar na Entrega do Carro</h5>
+                      <p>Pague presencialmente na oficina ao entregar o veículo para início do serviço.</p>
+                    </div>
+                  </div>
+
+                  <!-- Opção 2: Retirada -->
+                  <div class="payment-method-card" data-method="retirada">
+                    <div class="payment-card-icon">
+                      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="3" width="15" height="13" rx="2" ry="2"></rect><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"></polygon><circle cx="5.5" cy="18.5" r="2.5"></circle><circle cx="18.5" cy="18.5" r="2.5"></circle></svg>
+                    </div>
+                    <div class="payment-card-info">
+                      <h5>Pagar na Retirada do Carro</h5>
+                      <p>Pague na finalização e vistoria, no momento da entrega técnica e retirada do carro pronto.</p>
+                    </div>
+                  </div>
+
+                  <!-- Opção 3: Antecipado -->
+                  <div class="payment-method-card" data-method="antecipado">
+                    <div class="payment-card-icon">
+                      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2" ry="2"></rect><line x1="12" y1="4" x2="12" y2="20"></line><line x1="2" y1="12" x2="22" y2="12"></line></svg>
+                    </div>
+                    <div class="payment-card-info">
+                      <h5>Pagar com Antecedência</h5>
+                      <p>Garanta prioridade na grade interna realizando o pagamento de forma antecipada.</p>
+                    </div>
+
+                    <!-- Sub-opções expansíveis para Pagamento Antecipado -->
+                    <div class="payment-submethods-panel" id="payment-submethods-panel">
+                      
+                      <div class="payment-submethod-card active" data-submethod="pix">
+                        <div class="sub-indicator"></div>
+                        <div class="sub-info">
+                          <span class="sub-title">Pix com 5% de Desconto</span>
+                          <span class="sub-value" id="sub-pix-value">R$ 0,00</span>
+                        </div>
+                      </div>
+
+                      <div class="payment-submethod-card" data-submethod="cartao">
+                        <div class="sub-indicator"></div>
+                        <div class="sub-info">
+                          <span class="sub-title">Cartão de Crédito</span>
+                          <span class="sub-value" id="sub-card-value">12x de R$ 0,00</span>
+                        </div>
+                      </div>
+
+                      <div class="payment-submethod-card" data-submethod="dinheiro">
+                        <div class="sub-indicator"></div>
+                        <div class="sub-info">
+                          <span class="sub-title">Dinheiro Físico</span>
+                          <span class="sub-value" id="sub-cash-value">R$ 0,00</span>
+                        </div>
+                      </div>
+
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Inputs ocultos para controle de pagamento no envio -->
+                <input type="hidden" id="payment-choice" name="payment-choice" value="entrega">
+                <input type="hidden" id="payment-subchoice" name="payment-subchoice" value="">
+              </div>
+
+              <!-- Botões de Navegação Etapa 4 -->
+              <div class="wizard-actions dual-actions" style="margin-top: 24px; display: grid; grid-template-columns: 1fr 2fr; gap: 12px;">
+                <button type="button" class="btn btn-secondary prev-step-btn" data-prev="3" style="width: 100%; display: inline-flex; justify-content: center; align-items: center; min-height: 48px;">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="margin-right: 8px; transform: rotate(180deg);"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                  Voltar
+                </button>
+                <button type="submit" id="sim-submit-btn" class="btn btn-accent" style="width: 100%; display: inline-flex; justify-content: center; align-items: center; min-height: 48px; border: none;">
+                  Pre-agendar Orçamento Online
+                </button>
+              </div>
+            </div>
+          </form>
+
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- ==========================================================================
+       4. ENTERPRISE FOOTER & MAPS
+       ========================================================================== -->
+  <footer class="footer">
+    <div class="container footer-grid">
+      <div class="footer-info">
+        <img src="img/logo-autosport.png" alt="Auto Sport Centro Automotivo" class="footer-logo-img">
+        <p>Estética automotiva de padrão global e proteção cirúrgica com certificação internacional em Linhares, ES.</p>
+        <div class="footer-socials">
+          <a href="https://www.instagram.com/autosportcentroautomotivo" class="social-link" aria-label="Siga-nos no Instagram" target="_blank" rel="noopener">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+          </a>
+        </div>
+      </div>
+
+      <div class="footer-links">
+        <h4>Links Úteis</h4>
+        <ul>
+          <li><a href="index.html">Voltar à Home</a></li>
+          <li><a href="index.html#servicos">Nossos Serviços</a></li>
+          <li><a href="index.html#antes-depois">Antes & Depois</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-map">
+        <h4>Onde Estamos</h4>
+        <div class="map-container">
+          <iframe 
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1m4!2s-19.3908!3d-40.0678!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xb611c0f0d2c3df%3A0xe10ad5c0a0c4f87!2sLinhares%2C%20ES!5e0!3m2!1spt-BR!2sbr!4v1700000000000!5m2!1spt-BR!2sbr" 
+            width="100%" 
+            height="100%" 
+            style="border:0;" 
+            allowfullscreen="" 
+            loading="lazy" 
+            referrerpolicy="no-referrer-when-downgrade" 
+            title="Localização física da Auto Sport Centro Automotivo em Linhares, ES">
+          </iframe>
+        </div>
+      </div>
+    </div>
+
+    <div class="container footer-bottom">
+      <p>&copy; 2026 Auto Sport Centro Automotivo. Todos os direitos reservados. Linhares, ES.</p>
+    </div>
+  </footer>
+
+  <!-- TOAST DE NOTIFICAÇÃO -->
+  <div id="toast" class="toast" role="alert" aria-live="assertive">
+    <div class="toast-content">
+      <span class="toast-icon" id="toast-icon">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 8 12 12 16 14"></polyline></svg>
+      </span>
+      <p id="toast-message" class="toast-message">Mensagem de toast padrão...</p>
+    </div>
+  </div>
+
+  <!-- Lógica de Interações e Calendário Integrado (WAI-ARIA) -->
+  <script src="js/main.js" defer></script>
+  <script src="js/whatsapp-chat.js" defer></script>
+</body>
+</html>

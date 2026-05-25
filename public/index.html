@@ -3,648 +3,913 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>CHATBOT | CODEHIGHTECH</title>
-  <!-- Google Fonts: Inter -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
-  <link rel="icon" type="image/png" href="favicon.png">
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
+  
+  <!-- SEO Meta Tags -->
+  <title>Auto Sport Centro Automotivo | Estética Premium & Proteção em Linhares ES</title>
+  <meta name="description" content="Proteja seu veículo na Auto Sport Centro Automotivo em Linhares, ES. Especialistas em aplicação de PPF regenerativo, vitrificação de pintura 9H, películas nano-cerâmicas e detalhamento. Simule seu orçamento e agende online.">
+  <meta name="keywords" content="estética automotiva, PPF Linhares, vitrificação de pintura, detalhamento automotivo, insulfilme premium, Auto Sport Linhares">
+  <meta name="author" content="Auto Sport Centro Automotivo">
+  <meta name="robots" content="index, follow">
+  
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://autosportcentroautomotivo.com.br/">
+  <meta property="og:title" content="Auto Sport Centro Automotivo | Estética Premium em Linhares ES">
+  <meta property="og:description" content="Proteção de pintura avançada (PPF), vitrificação cerâmica e películas premium. Agende seu serviço com simulador e agendador integrado.">
+  <meta property="og:image" content="https://images.unsplash.com/photo-1618843479313-40f8afb4b4d8?auto=format&fit=crop&w=1200&h=630&q=80">
+
+  <!-- Estilos e Design System Otimizado (Princípios UI/UX Pro Max) -->
+  <link rel="stylesheet" href="css/style.css">
+  
+  <!-- Flatpickr CSS para Agendamento Premium -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+
+  <!-- JSON-LD Dados Estruturados Schema.org -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "LocalBusiness",
+        "@id": "https://autosportcentroautomotivo.com.br/#localbusiness",
+        "name": "Auto Sport Centro Automotivo",
+        "image": "https://images.unsplash.com/photo-1618843479313-40f8afb4b4d8?auto=format&fit=crop&w=1200&q=80",
+        "telephone": "+5527998803770",
+        "url": "https://autosportcentroautomotivo.com.br/",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "Av. Nereu Ramos, Linhares",
+          "addressLocality": "Linhares",
+          "addressRegion": "ES",
+          "postalCode": "29900-000",
+          "addressCountry": "BR"
+        },
+        "geo": {
+          "@type": "GeoCoordinates",
+          "latitude": -19.3908,
+          "longitude": -40.0678
+        },
+        "priceRange": "$$$",
+        "openingHoursSpecification": {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": [
+            "Monday",
+            "Tuesday",
+            "Wednesday",
+            "Thursday",
+            "Friday",
+            "Saturday"
+          ],
+          "opens": "08:00",
+          "closes": "18:00"
+        }
+      }
+    ]
+  }
+  </script>
 </head>
 <body>
 
-  <!-- CONTAINER PRINCIPAL -->
-  <div class="app-container">
-    
-    <!-- SIDEBAR DE NAVEGAÇÃO -->
-    <aside class="sidebar">
-      <div class="sidebar-header">
-        <img src="logo.png" alt="CodeHighTech Logo" class="sidebar-logo">
-      </div>
+  <!-- Link de Acessibilidade para navegação por teclado -->
+  <a href="#main-content" class="skip-link">Ir para o conteúdo principal</a>
 
-      <nav class="sidebar-menu">
-        <button class="menu-item active" data-target="section-overview">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="9"></rect><rect x="14" y="3" width="7" height="5"></rect><rect x="14" y="12" width="7" height="9"></rect><rect x="3" y="16" width="7" height="5"></rect></svg>
-          <span>Visão Geral</span>
-        </button>
-        <button class="menu-item" data-target="section-calendar">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
-          <span>Calendário</span>
-          <span class="badge" id="calendar-badge" style="background-color: var(--primary); box-shadow: 0 2px 6px var(--primary-glow);">0</span>
-        </button>
-        <button class="menu-item" data-target="section-completed">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
-          <span>Agendamentos</span>
-          <span class="badge" id="completed-badge" style="background-color: var(--success); box-shadow: 0 2px 6px var(--success-glow);">0</span>
-        </button>
-        <button class="menu-item" data-target="section-sessions">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
-          <span>Sessões Ativas</span>
-          <span class="badge" id="sessions-badge">0</span>
-        </button>
-        <button class="menu-item" data-target="section-clients">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle></svg>
-          <span>Clientes (CRM)</span>
-          <span class="badge" id="clients-badge" style="background-color: var(--success); box-shadow: 0 2px 6px var(--success-glow);">0</span>
-        </button>
-        <button class="menu-item" data-target="section-config">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>
-          <span>Configurações</span>
-        </button>
-        <button class="menu-item" data-target="section-connection">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path><path d="M12 2a15.3 15.3 0 0 1 4 10"></path><path d="M12 6a10.3 10.3 0 0 1 2 6"></path></svg>
-          <span>Conexão WhatsApp</span>
-        </button>
-        <button class="menu-item" data-target="section-logs">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="4 17 10 11 16 17 22 11"></polyline><polyline points="12 4 22 4 22 14"></polyline></svg>
-          <span>Console de Logs</span>
-        </button>
-      </nav>
-
-      <div class="sidebar-footer">
-        <div class="developer-info">
-          <p>Desenvolvido por</p>
-         <a href="https://www.instagram.com/guilherme_dev_web_ofc/"><h4>Guilherme B.</h4></a>
-        </div>
-      </div>
-    </aside>
-
-    <!-- ÁREA DE CONTEÚDO PRINCIPAL -->
-    <main class="main-content">
-      
-      <!-- TOPO / CABEÇALHO -->
-      <header class="main-header">
-        <div class="header-title">
-          <h1 id="page-title">Visão Geral</h1>
-          <p id="page-subtitle">Monitore o status e a saúde de seu assistente virtual.</p>
-        </div>
-
-        <div class="header-status">
-          <button id="theme-toggle" class="btn-theme-toggle" aria-label="Alternar Tema">
-            <svg id="theme-toggle-dark-icon" class="hidden" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
-            <svg id="theme-toggle-light-icon" class="hidden" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
-          </button>
-
-          <div class="status-indicator">
-            <span class="status-dot pulsing" id="status-dot"></span>
-            <span class="status-text" id="status-text">Verificando...</span>
-          </div>
-        </div>
-      </header>
-
-      <!-- CONTEÚDO DINÂMICO POR SEÇÕES -->
-      <div class="content-wrapper">
-
-        <!-- =====================================
-             SEÇÃO: VISÃO GERAL (OVERVIEW)
-             ===================================== -->
-        <section id="section-overview" class="tab-content active">
-          
-          <!-- CARDS DE MÉTRICAS -->
-          <div class="metrics-grid">
-            <div class="metric-card">
-              <div class="metric-icon blue">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
-              </div>
-              <div class="metric-info">
-                <h3>Horário do Sistema</h3>
-                <p id="metric-clock">00:00:00</p>
-              </div>
-            </div>
-            
-            <div class="metric-card">
-              <div class="metric-icon green">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
-              </div>
-              <div class="metric-info">
-                <h3>Sessões Ativas</h3>
-                <p id="metric-active-sessions">0 Clientes</p>
-              </div>
-            </div>
-
-            <div class="metric-card">
-              <div class="metric-icon purple">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
-              </div>
-              <div class="metric-info">
-                <h3>Segurança</h3>
-                <p>Criptografia Ponta-a-Ponta</p>
-              </div>
-            </div>
-          </div>
-
-          <!-- PAINEL DE GRÁFICOS E MÉTRICAS EM TEMPO REAL -->
-          <div class="analytics-grid">
-            
-            <!-- CARD DO GRÁFICO DE SERVIÇOS AGENDADOS -->
-            <div class="analytics-card chart-card">
-              <div class="card-header">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 20V10M12 20V4M6 20v-6"></path></svg>
-                <h3>Distribuição de Serviços Agendados</h3>
-              </div>
-              <div class="chart-container">
-                <canvas id="services-chart"></canvas>
-              </div>
-            </div>
-
-            <!-- CARD DE METRICAS E RESUMO DA SEMANA -->
-            <div class="analytics-card summary-card">
-              <div class="card-header">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
-                <h3>Resumo de Agendamentos</h3>
-              </div>
-              <div class="weekly-metrics-list">
-                
-                <div class="weekly-metric-item">
-                  <div class="metric-label">
-                    <span class="dot green"></span>
-                    <span>Pedidos Agendados (Geral)</span>
-                  </div>
-                  <strong id="metric-total-orders">0</strong>
-                </div>
-
-                <div class="weekly-metric-item">
-                  <div class="metric-label">
-                    <span class="dot blue"></span>
-                    <span>Agendamentos da Semana</span>
-                  </div>
-                  <strong id="metric-week-orders">0</strong>
-                </div>
-
-                <div class="weekly-metric-item">
-                  <div class="metric-label">
-                    <span class="dot purple"></span>
-                    <span>Serviços Concluídos e Pagos</span>
-                  </div>
-                  <strong id="metric-paid-orders">0</strong>
-                </div>
-
-                <div class="weekly-metric-item">
-                  <div class="metric-label">
-                    <span class="dot gold"></span>
-                    <span>Faturamento Estimado</span>
-                  </div>
-                  <strong id="metric-estimated-revenue">R$ 0,00</strong>
-                </div>
-
-              </div>
-            </div>
-
-          </div>
-
-        </section>
-
-        <!-- =====================================
-             SEÇÃO: CONEXÃO WHATSAPP (CONNECTION)
-             ===================================== -->
-        <section id="section-connection" class="tab-content">
-          
-          <div class="status-center-card">
-            
-            <!-- CASO 1: DESCONECTADO OU AGUARDANDO QR -->
-            <div id="tab-qr-container" class="status-display-wrapper hidden">
-              <div class="qr-content">
-                <div class="qr-instructions">
-                  <h2>Vincular Novo Aparelho</h2>
-                  <p>Escaneie o QR Code abaixo com a câmera do seu celular pelo aplicativo do WhatsApp para iniciar o robô inteligente.</p>
-                  
-                  <div class="instruction-steps">
-                    <div class="step"><span>1</span> Abra o WhatsApp</div>
-                    <div class="step"><span>2</span> Vá em Aparelhos Conectados</div>
-                    <div class="step"><span>3</span> Toque em Conectar Aparelho</div>
-                    <div class="step"><span>4</span> Aponte a câmera para esta tela</div>
-                  </div>
-                </div>
-                
-                <div class="qr-view-box">
-                  <div class="qr-spinner" id="tab-qr-spinner">
-                    <div class="spinner"></div>
-                    <span>Gerando QR Code...</span>
-                  </div>
-                  <div id="tab-qr-code-graphic" class="qr-graphic"></div>
-                </div>
-              </div>
-            </div>
-
-            <!-- CASO 2: CONECTADO COM SUCESSO -->
-            <div id="tab-connected-container" class="status-display-wrapper hidden">
-              <div class="success-banner">
-                <div class="success-ring">
-                  <div class="success-ring-glow"></div>
-                  <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="checkmark-icon"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
-                </div>
-                <h2>Conectado à Rede WhatsApp</h2>
-                <p>O chatbot está sincronizado e operando em segundo plano. Ele responderá a novos contatos de forma 100% automatizada.</p>
-                
-                <div class="session-info-pill" id="tab-session-user-details" style="margin-bottom: 24px;">
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
-                  <span id="tab-connected-phone-number">Linha ativa de atendimento</span>
-                </div>
-
-                <div class="disconnect-action-row" style="margin-top: 16px;">
-                  <button type="button" id="btn-logout-whatsapp" class="btn-secondary danger" style="padding: 12px 24px; font-weight: 700; display: inline-flex; align-items: center; gap: 8px;">
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18.36 6.64a9 9 0 1 1-12.73 0"></path><line x1="12" y1="2" x2="12" y2="12"></line></svg>
-                    Desconectar Esta Conta (Logout)
-                  </button>
-                </div>
-              </div>
-            </div>
-            
-          </section>
-
-        <!-- =====================================
-             SEÇÃO: CONFIGURAÇÕES DO CHATBOT (SETTINGS)
-             ===================================== -->
-        <section id="section-config" class="tab-content">
-          
-          <form id="bot-config-form" class="config-form">
-            
-            <div class="config-grid">
-              
-              <!-- CARD: METADADOS DA EMPRESA -->
-              <div class="form-card">
-                <div class="card-header">
-                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><line x1="9" y1="3" x2="9" y2="21"></line></svg>
-                  <h3>Identidade & Saudações</h3>
-                </div>
-                
-                <div class="form-group">
-                  <label for="input-nome-empresa">Nome da Empresa</label>
-                  <input type="text" id="input-nome-empresa" required placeholder="Ex: Auto Sport Estética Automotiva">
-                  <span class="help-text">Exibido em negrito no topo da mensagem de boas-vindas.</span>
-                </div>
-
-                <div class="form-group">
-                  <label for="input-saudacao">Subsaudação / Instrução inicial</label>
-                  <textarea id="input-saudacao" rows="3" required placeholder="Como podemos ajudar você hoje?"></textarea>
-                  <span class="help-text">Instrução logo antes das opções numéricas do menu inicial.</span>
-                </div>
-
-                <div class="form-group">
-                  <label for="input-msg-final">Mensagem Final de Sucesso</label>
-                  <textarea id="input-msg-final" rows="3" required placeholder="Nossa equipe entrará em contato em instantes."></textarea>
-                  <span class="help-text">Enviada ao cliente logo após ele finalizar o fluxo de agendamento.</span>
-                </div>
-              </div>
-
-              <!-- CARD: LOCALIZAÇÃO & CONTATO -->
-              <div class="form-card">
-                <div class="card-header">
-                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a8 8 0 0 0-8 8c0 5.25 8 12 8 12s8-6.75 8-12a8 8 0 0 0-8-8z"></path><circle cx="12" cy="10" r="3"></circle></svg>
-                  <h3>Localização & Contato</h3>
-                </div>
-                
-                <div class="form-group">
-                  <label for="input-endereco">Endereço Físico</label>
-                  <input type="text" id="input-endereco" required placeholder="Rua Exemplo, 123 - Centro">
-                  <span class="help-text">Enviado quando o usuário escolhe a opção 4️⃣ (Localização).</span>
-                </div>
-
-                <div class="form-group">
-                  <label for="input-link-mapa">Link do Google Maps</label>
-                  <input type="url" id="input-link-mapa" required placeholder="https://maps.google.com">
-                  <span class="help-text">URL curta ou rota direta para facilitar o GPS do cliente.</span>
-                </div>
-                
-                <div class="form-group">
-                  <label>Formas de Pagamento Aceitas</label>
-                  <div id="payment-chips-container" class="chips-container">
-                    <!-- Gerado dinamicamente -->
-                  </div>
-                  <div class="add-chip-row">
-                    <input type="text" id="input-new-payment" placeholder="Nova forma de pagamento...">
-                    <button type="button" id="btn-add-payment" class="btn-secondary">Adicionar</button>
-                  </div>
-                </div>
-              </div>
-
-              <!-- CARD: SERVIÇOS AGENDÁVEIS (FUNIL) -->
-              <div class="form-card full-width">
-                <div class="card-header">
-                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
-                  <h3>Serviços Disponíveis para Agendamento</h3>
-                </div>
-                
-                <div class="services-edit-table-wrapper">
-                  <table class="premium-table" id="services-table">
-                    <thead>
-                      <tr>
-                        <th width="80">Atalho (ID)</th>
-                        <th>Nome do Serviço</th>
-                        <th width="100" class="actions-col">Ações</th>
-                      </tr>
-                    </thead>
-                    <tbody id="services-tbody">
-                      <!-- Renderizado dinamicamente -->
-                    </tbody>
-                  </table>
-                </div>
-                
-                <div class="add-service-form-row">
-                  <input type="text" id="new-service-id" placeholder="ID (ex: 6)" style="max-width: 80px;">
-                  <input type="text" id="new-service-name" placeholder="Nome do Serviço (ex: Vitrificação de Plásticos)">
-                  <button type="button" id="btn-add-service" class="btn-secondary">Adicionar Serviço</button>
-                </div>
-              </div>
-
-              <!-- CARD: LISTAGEM GERAL DE OUTROS SERVIÇOS -->
-              <div class="form-card full-width">
-                <div class="card-header">
-                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="16"></line><line x1="8" y1="12" x2="16" y2="12"></line></svg>
-                  <h3>Listagem Geral de Todos os Serviços do Portfólio</h3>
-                </div>
-                <div class="form-group">
-                  <span class="help-text">Exibida quando o usuário clica em 2️⃣ Ver Serviços. Edite a listagem adicionando chips rápidos.</span>
-                  <div id="general-services-chips" class="chips-container style-grid">
-                    <!-- Gerado dinamicamente -->
-                  </div>
-                  <div class="add-chip-row">
-                    <input type="text" id="input-new-general-service" placeholder="Adicionar outro serviço do portfólio...">
-                    <button type="button" id="btn-add-general-service" class="btn-secondary">Adicionar</button>
-                  </div>
-                </div>
-              </div>
-
-            </div>
-
-            <div class="form-actions-bar">
-              <button type="submit" class="btn-primary glow-button" id="btn-save-config">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"></path><polyline points="17 21 17 13 7 13 7 21"></polyline><polyline points="7 3 7 8 15 8"></polyline></svg>
-                <span>Salvar Todas as Configurações</span>
-              </button>
-            </div>
-
-          </form>
-
-        </section>
-
-        <!-- =====================================
-             SEÇÃO: MONITOR DE SESSÕES ATIVAS
-             ===================================== -->
-        <section id="section-sessions" class="tab-content">
-          
-          <div class="sessions-header-actions">
-            <h2>Clientes Ativos no Funil</h2>
-            <p>Abaixo estão listados os contatos do WhatsApp que iniciaram uma conversa recentemente e estão avançando nas etapas do funil.</p>
-          </div>
-
-          <div class="sessions-table-wrapper card-container" style="margin-bottom: 40px;">
-            <table class="premium-table" id="sessions-table">
-              <thead>
-                <tr>
-                  <th>WhatsApp (Contato)</th>
-                  <th>Etapa Atual</th>
-                  <th>Serviço Escolhido</th>
-                  <th>Veículo</th>
-                  <th>Última Interação</th>
-                  <th width="150" class="actions-col">Ações</th>
-                </tr>
-              </thead>
-              <tbody id="sessions-tbody">
-                <tr>
-                  <td colspan="6" class="table-empty">Nenhum cliente ativo no funil neste momento.</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-
-        </section>
-
-        <!-- =====================================
-             SEÇÃO: AGENDAMENTOS CONCLUÍDOS (CARDS)
-             ===================================== -->
-        <section id="section-completed" class="tab-content">
-          
-          <div class="sessions-header-actions">
-            <div class="desc">
-              <h2>Agendamentos Confirmados</h2>
-              <p>Consulte todos os agendamentos confirmados pelo chatbot em tempo real em formato de cards premium.</p>
-            </div>
-            
-            <button class="btn-secondary danger" id="btn-clear-appointments" style="padding: 8px 16px; font-size: 0.78rem;">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="margin-right: 4px;"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path></svg>
-              <span>Limpar Histórico</span>
-            </button>
-          </div>
-
-          <div class="completed-cards-grid" id="completed-cards-container">
-            <div class="completed-empty-state">
-              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="opacity: 0.5;"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
-              <p>Nenhum agendamento concluído recentemente.</p>
-            </div>
-          </div>
-        </section>
-
-        <!-- =====================================
-             SEÇÃO: CLIENTES CADASTRADOS (CRM)
-             ===================================== -->
-        <section id="section-clients" class="tab-content">
-          
-          <div class="sessions-header-actions">
-            <h2>Clientes Cadastrados (CRM)</h2>
-            <p>Gerencie a base de clientes cadastrados, consulte seus CPFs, contatos e os veículos vinculados a cada perfil.</p>
-          </div>
-
-          <div class="sessions-table-wrapper card-container">
-            <table class="premium-table" id="clients-table">
-              <thead>
-                <tr>
-                  <th>Nome do Cliente</th>
-                  <th>WhatsApp (Contato)</th>
-                  <th>CPF</th>
-                  <th>Veículos</th>
-                  <th>Data de Cadastro</th>
-                  <th width="150" class="actions-col">Ações</th>
-                </tr>
-              </thead>
-              <tbody id="clients-tbody">
-                <tr>
-                  <td colspan="6" class="table-empty">Nenhum cliente cadastrado no momento.</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-
-        </section>
-
-        <!-- =====================================
-             SEÇÃO: CALENDÁRIO DE AGENDAMENTOS
-             ===================================== -->
-        <section id="section-calendar" class="tab-content">
-          
-          <div class="sessions-header-actions">
-            <h2>Calendário de Agendamentos</h2>
-            <p>Monitore os dias e horários de serviços agendados para sua estética de forma visual e intuitiva.</p>
-          </div>
-
-          <div class="calendar-layout-grid">
-            
-            <!-- COLUNA ESQUERDA: O CALENDÁRIO -->
-            <div class="calendar-card card-container">
-              <div class="calendar-nav-header">
-                <button type="button" class="btn-icon" id="btn-prev-month">
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
-                </button>
-                <h3 id="calendar-month-year">Carregando...</h3>
-                <button type="button" class="btn-icon" id="btn-next-month">
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
-                </button>
-              </div>
-              
-              <div class="calendar-grid-weekdays">
-                <div>Dom</div>
-                <div>Seg</div>
-                <div>Ter</div>
-                <div>Qua</div>
-                <div>Qui</div>
-                <div>Sex</div>
-                <div>Sáb</div>
-              </div>
-              
-              <div class="calendar-grid-days" id="calendar-days-container">
-                <!-- Gerado dinamicamente via JS -->
-              </div>
-            </div>
-            
-            <!-- COLUNA DIREITA: COMPROMISSOS DO DIA SELECIONADO -->
-            <div class="calendar-details-card card-container">
-              <div class="details-header-row">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
-                <h3 id="selected-day-title">Serviços do Dia</h3>
-              </div>
-              
-              <!-- FILTRO DE SERVIÇOS DO DIA -->
-              <div class="calendar-filter-row" id="calendar-service-filter-container" style="display: none;">
-                <!-- Gerado dinamicamente -->
-              </div>
-              
-              <div class="day-appointments-list" id="day-appointments-container">
-                <!-- Gerado dinamicamente -->
-              </div>
-            </div>
-
-          </div>
-
-        </section>
-
-        <!-- =====================================
-             SEÇÃO: CONSOLE DE LOGS
-             ===================================== -->
-        <section id="section-logs" class="tab-content">
-          
-          <div class="logs-header-actions">
-            <div class="desc">
-              <h2>Console do Sistema em Tempo Real</h2>
-              <p>Monitore requisições, eventos de conexão e o fluxo de mensagens de texto recebidos de seus clientes no WhatsApp.</p>
-            </div>
-            
-            <button class="btn-secondary danger" id="btn-clear-logs">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path><line x1="10" y1="11" x2="10" y2="17"></line><line x1="14" y1="11" x2="14" y2="17"></line></svg>
-              <span>Limpar Console</span>
-            </button>
-          </div>
-
-          <!-- TERMINAL VIRTUAL -->
-          <div class="terminal-container">
-            <div class="terminal-bar">
-              <div class="terminal-dots">
-                <span class="dot red"></span>
-                <span class="dot yellow"></span>
-                <span class="dot green"></span>
-              </div>
-              <div class="terminal-title">bash - node chatbot.js - stream</div>
-            </div>
-            <div class="terminal-body" id="terminal-output">
-              <!-- Logs dinâmicos vão entrar aqui -->
-              <div class="log-line system">⚡ Conectando ao fluxo de logs em tempo real...</div>
-            </div>
-          </div>
-
-        </section>
-
-      </div>
-
-    </main>
-
-  </div>
-
-  <!-- MODAL DE DETALHES DO CLIENTE / TRANSCRIÇÃO CHAT -->
-  <div id="details-modal" class="modal-backdrop hidden">
-    <div class="modal-card">
-      <div class="modal-header">
-        <div class="modal-header-title">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
-          <h3 id="modal-client-name">Nome do Cliente</h3>
-        </div>
-        <button type="button" class="modal-close-btn" id="btn-close-modal">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
-        </button>
-      </div>
-      
-      <div class="modal-body">
-        <!-- Detalhes Consolidados -->
-        <div class="consolidated-details-grid">
-          <div class="detail-item">
-            <span>WhatsApp</span>
-            <strong id="modal-detail-phone">+55 (00) 00000-0000</strong>
-          </div>
-          <div class="detail-item">
-            <span>Etapa Atual</span>
-            <strong id="modal-detail-stage">Menu Inicial</strong>
-          </div>
-          <div class="detail-item">
-            <span>Serviço Escolhido</span>
-            <strong id="modal-detail-service">Aguardando...</strong>
-          </div>
-          <div class="detail-item">
-            <span>Tipo de Veículo</span>
-            <strong id="modal-detail-vehicle">Aguardando...</strong>
-          </div>
-          <div class="detail-item" id="modal-detail-payment-row" style="grid-column: span 2; display: flex; justify-content: space-between; border-top: 1px solid var(--border-color); padding-top: 10px; margin-top: 5px;">
-            <span>Forma de Pagamento</span>
-            <strong id="modal-detail-payment">Aguardando...</strong>
-          </div>
-        </div>
-        
-        <!-- Histórico de Conversa (Timeline) -->
-        <h4 class="timeline-title">Transcrição da Conversa em Tempo Real</h4>
-        <div class="chat-timeline" id="modal-chat-timeline">
-          <!-- Gerado dinamicamente -->
-        </div>
+  <!-- ==========================================================================
+       1. SCREEN LOADER PREMIUM
+       ========================================================================== -->
+  <div id="loader" class="loader-wrapper" role="status" aria-live="polite">
+    <div class="loader-logo-container">
+      <div class="loader-logo">AUTO SPORT<span>.</span></div>
+      <div class="loader-bar-bg">
+        <div class="loader-bar-fill"></div>
       </div>
     </div>
   </div>
 
-  <!-- MODAL DE DETALHES DE VEÍCULOS (CRM) -->
-  <div id="vehicles-modal" class="modal-backdrop hidden">
-    <div class="modal-box vehicles-modal-box">
-      <div class="modal-header">
-        <h3 id="modal-vehicles-client-name">Veículos do Cliente</h3>
-        <button id="btn-close-vehicles-modal" class="close-modal-btn">
+  <!-- ==========================================================================
+       2. STICKY MAIN HEADER CONTAINER
+       ========================================================================== -->
+  <div class="main-header-fixed">
+    
+
+
+    <!-- 2. GLASSMORPHIC NAVBAR (TEMA DINÂMICO & NAVEGAÇÃO) -->
+    <header id="navbar" class="navbar">
+      <div class="container nav-container">
+        <a href="index.html" class="logo-link" aria-label="Auto Sport Home">
+          <img src="img/logo-autosport.png" alt="Auto Sport Centro Automotivo" class="header-logo-img">
+        </a>
+        
+        <!-- Menu Desktop -->
+        <nav aria-label="Navegação Principal">
+          <ul id="nav-menu" class="nav-menu">
+            <li><a href="#servicos" class="nav-link">Serviços</a></li>
+            <li><a href="#diferenciais" class="nav-link">Diferenciais</a></li>
+            <li><a href="#depoimentos" class="nav-link">Depoimentos</a></li>
+            <li><a href="#perguntas" class="nav-link">Dúvidas</a></li>
+
+            <li><a href="agendar.html" class="btn btn-primary btn-glow" style="padding: 10px 20px; font-size: 0.85rem; min-height: auto;">Agendar Online</a></li>
+          </ul>
+        </nav>
+
+        <!-- Botão Menu Responsivo Mobile -->
+        <button id="burger-btn" class="burger-btn" aria-label="Abrir menu de navegação" aria-expanded="false" aria-controls="nav-menu">
+          <span class="burger-line"></span>
+          <span class="burger-line"></span>
+          <span class="burger-line"></span>
+        </button>
+      </div>
+    </header>
+  </div>
+
+  <!-- Corpo Principal Otimizado -->
+  <main id="main-content" tabindex="-1">
+    
+    <!-- ==========================================================================
+         3. HERO SECTION - CARROSSEL DE VÍDEO CINEMÁTICO LUXUOSO COM FORM DE DUAS COLUNAS
+         ========================================================================== -->
+    <section class="hero-section">
+      <!-- Background Video slides (1 slide active at a time) -->
+      <div class="hero-carousel-container">
+        
+        <!-- Slide 1: Proteção Completa PPF -->
+        <div class="hero-slide active" data-slide-index="0">
+          <div class="hero-video-wrapper">
+            <video class="hero-bg-video" autoplay loop muted playsinline preload="auto">
+              <source src="videos/hero-slide1.mp4" type="video/mp4">
+            </video>
+            <div class="hero-video-overlay"></div>
+          </div>
+          <div class="hero-slide-grid">
+            <div class="hero-content">
+              <h1>
+                Película PPF &<br>
+                <span class="text-glow">Vitrificação 9H</span>
+              </h1>
+              <p>Proteção física invisível regenerativa a calor contra pedriscos, riscos e manchas de estradas. Conserve o brilho original de showroom e preserve o valor do seu veículo.</p>
+              <div class="hero-ctas">
+                <a href="#servicos" class="btn btn-primary">
+                  Conhecer Serviços
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Slide 2: Polimento Técnico -->
+        <div class="hero-slide" data-slide-index="1">
+          <div class="hero-video-wrapper">
+            <video class="hero-bg-video" loop muted playsinline preload="metadata">
+              <source src="videos/hero-slide2.mp4" type="video/mp4">
+            </video>
+            <div class="hero-video-overlay"></div>
+          </div>
+          <div class="hero-slide-grid">
+            <div class="hero-content">
+              <h1>
+                Polimento Técnico &<br>
+                <span class="text-glow">Brilho Espelhado</span>
+              </h1>
+              <p>Eliminação profunda de riscos superficiais, marcas de lavagem e hologramas. Devolva o aspecto de veículo zero quilômetro com acabamento reflexivo de altíssimo nível.</p>
+              <div class="hero-ctas">
+                <a href="#antes-depois" class="btn btn-primary">
+                  Ver Antes & Depois
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Slide 3: Lavagem Detalhada -->
+        <div class="hero-slide" data-slide-index="2">
+          <div class="hero-video-wrapper">
+            <video class="hero-bg-video" loop muted playsinline preload="metadata">
+              <source src="videos/hero-slide3.mp4" type="video/mp4">
+            </video>
+            <div class="hero-video-overlay"></div>
+          </div>
+          <div class="hero-slide-grid">
+            <div class="hero-content">
+              <h1>
+                Lavagem Técnica &<br>
+                <span class="text-glow">Detalhe Interno</span>
+              </h1>
+              <p>Cuidado artesanal na higienização de estofados, motor e chassis com produtos de pH neutro e técnicas que eliminam impurezas preservando plásticos e couros nobres.</p>
+              <div class="hero-ctas">
+                <a href="agendar.html" class="btn btn-primary">
+                  Agendar Agora
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Indicadores de slide (Carousel dots controllers) -->
+      <div class="hero-carousel-dots">
+        <button type="button" class="dot active" data-dot-index="0" aria-label="Slide 1 - PPF e Vitrificação"></button>
+        <button type="button" class="dot" data-dot-index="1" aria-label="Slide 2 - Polimento"></button>
+        <button type="button" class="dot" data-dot-index="2" aria-label="Slide 3 - Detalhamento"></button>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         4. SEÇÃO SERVIÇOS - LAYOUT DOIS COLUNAS (FOTO + TEXTO)
+         ========================================================================== -->
+    <section id="servicos" class="servicos-split-section">
+      <!-- Título centralizado grande -->
+      <div class="servicos-split-header">
+        <h2>AQUI SEU CARRO FICARÁ<br>SIMPLESMENTE IMPECÁVEL.</h2>
+      </div>
+
+      <!-- Grid dois colunas -->
+      <div class="container servicos-split-grid">
+        <!-- Coluna Esquerda: Foto -->
+        <div class="servicos-split-image reveal-on-scroll">
+          <img
+            src="https://images.unsplash.com/photo-1619642751034-765dfdf7c58e?auto=format&fit=crop&w=800&q=80"
+            alt="Técnico aplicando polimento em carro vermelho na Auto Sport"
+            class="servicos-split-img"
+          >
+        </div>
+
+        <!-- Coluna Direita: Texto -->
+        <div class="servicos-split-content reveal-on-scroll">
+          <p class="servicos-split-desc">
+            Nossos serviços incluem desde <strong>Lavagem, Limpeza e higienização de Interiores, Polimento, Vitrificação de pintura, Insulfilm e Película Antivandalismo.</strong> Trabalhamos com as melhores marcas e produtos do mercado para garantir que o resultado final seja simplesmente impecável.
+          </p>
+
+          <ul class="servicos-checklist">
+            <li>
+              <svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              <div>
+                <strong>Serviços De Qualidade</strong>
+                <p>Nossos serviços incluem desde limpeza e higienização de interiores até polimento e cristalização de pintura.</p>
+              </div>
+            </li>
+            <li>
+              <svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              <div>
+                <strong>Melhor Preço</strong>
+                <p>Oferecemos os melhores produtos e melhores serviços por um preço acessível.</p>
+              </div>
+            </li>
+          </ul>
+
+          <a href="agendar.html" class="btn-servicos-cta">
+            AGENDAR SERVIÇO
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- Decoração curvas (SVG) -->
+      <svg class="servicos-deco" viewBox="0 0 200 600" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <path d="M180 0 Q220 150 180 300 Q140 450 180 600" stroke="#d4c4a8" stroke-width="1.5" fill="none"/>
+        <path d="M160 0 Q200 150 160 300 Q120 450 160 600" stroke="#d4c4a8" stroke-width="1" fill="none" opacity="0.6"/>
+      </svg>
+    </section>
+
+    <!-- ==========================================================================
+         4.2. MARQUEE DE MARCAS PARCEIRAS (SCROLL INFINITO DIREITA → ESQUERDA)
+         ========================================================================== -->
+    <section class="brands-marquee-section" aria-label="Marcas parceiras">
+      <p class="brands-marquee-label">TRABALHAMOS COM OS MELHORES PRODUTOS</p>
+      <div class="brands-marquee-track-wrapper">
+        <div class="brands-marquee-track">
+          <!-- Set 1 -->
+          <div class="brand-item">
+            <span class="brand-logo brand-3m">3M</span>
+          </div>
+          <div class="brand-item">
+            <span class="brand-logo brand-vonixx">VONIXX</span>
+          </div>
+          <div class="brand-item">
+            <span class="brand-logo brand-sonax">SONAX</span>
+          </div>
+          <div class="brand-item">
+            <span class="brand-logo brand-koch">Koch Chemie</span>
+          </div>
+          <div class="brand-item">
+            <span class="brand-logo brand-gyeon">GYEON</span>
+          </div>
+          <div class="brand-item">
+            <span class="brand-logo brand-maxpro">MAXPRO</span>
+          </div>
+          <div class="brand-item">
+            <span class="brand-logo brand-meguiars">Meguiar's</span>
+          </div>
+          <div class="brand-item">
+            <span class="brand-logo brand-luxcar">LUXCAR</span>
+          </div>
+          <!-- Set 2 (duplicado para loop infinito) -->
+          <div class="brand-item" aria-hidden="true">
+            <span class="brand-logo brand-3m">3M</span>
+          </div>
+          <div class="brand-item" aria-hidden="true">
+            <span class="brand-logo brand-vonixx">VONIXX</span>
+          </div>
+          <div class="brand-item" aria-hidden="true">
+            <span class="brand-logo brand-sonax">SONAX</span>
+          </div>
+          <div class="brand-item" aria-hidden="true">
+            <span class="brand-logo brand-koch">Koch Chemie</span>
+          </div>
+          <div class="brand-item" aria-hidden="true">
+            <span class="brand-logo brand-gyeon">GYEON</span>
+          </div>
+          <div class="brand-item" aria-hidden="true">
+            <span class="brand-logo brand-maxpro">MAXPRO</span>
+          </div>
+          <div class="brand-item" aria-hidden="true">
+            <span class="brand-logo brand-meguiars">Meguiar's</span>
+          </div>
+          <div class="brand-item" aria-hidden="true">
+            <span class="brand-logo brand-luxcar">LUXCAR</span>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- ==========================================================================
+         4.5. NOSSOS SERVIÇOS - BENTO DARK GRID
+         ========================================================================== -->
+    <section id="diferenciais" class="ns-section">
+      <div class="container">
+
+        <!-- Header -->
+        <div class="ns-header reveal-on-scroll">
+          <p class="ns-label">
+            <span class="ns-dot"></span>
+            O que fazemos?
+          </p>
+          <h2 class="ns-title">Nossos Serviços</h2>
+        </div>
+
+        <!-- Linha 1: 3 cards com foto -->
+        <div class="ns-row-top reveal-on-scroll">
+
+          <div class="ns-card ns-card-photo">
+            <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?auto=format&fit=crop&w=600&q=80" alt="Higienização Interna" class="ns-card-img">
+            <div class="ns-card-overlay"></div>
+            <a href="agendar.html" class="ns-card-arrow" aria-label="Agendar Higienização">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+            </a>
+            <div class="ns-card-text">
+              <h3>Higienização Interna</h3>
+              <p>Limpeza profunda de todo o interior do veículo, removendo sujeiras, bactérias e odores.</p>
+            </div>
+          </div>
+
+          <div class="ns-card ns-card-photo">
+            <img src="https://images.unsplash.com/photo-1619642751034-765dfdf7c58e?auto=format&fit=crop&w=600&q=80" alt="Coating Cerâmico" class="ns-card-img">
+            <div class="ns-card-overlay"></div>
+            <a href="agendar.html" class="ns-card-arrow" aria-label="Agendar Coating">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+            </a>
+            <div class="ns-card-text">
+              <h3>Coating Cerâmico</h3>
+              <p>Proteção avançada para pintura com duração de até 2 anos, repelindo água e sujeira.</p>
+            </div>
+          </div>
+
+          <div class="ns-card ns-card-photo">
+            <img src="https://images.unsplash.com/photo-1601362840469-51e4d8d58785?auto=format&fit=crop&w=600&q=80" alt="Lavagem Detalhada" class="ns-card-img">
+            <div class="ns-card-overlay"></div>
+            <a href="agendar.html" class="ns-card-arrow" aria-label="Agendar Lavagem">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+            </a>
+            <div class="ns-card-text">
+              <h3>Lavagem Detalhada</h3>
+              <p>Limpeza minuciosa interna e externa com produtos profissionais e técnicas especiais.</p>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Linha 2: PPF wide + Insufilm + CTA -->
+        <div class="ns-row-bottom reveal-on-scroll">
+
+          <!-- Card largo PPF com foto -->
+          <div class="ns-card ns-card-wide ns-card-photo">
+            <img src="https://images.unsplash.com/photo-1565043589221-1a6fd9ae45c7?auto=format&fit=crop&w=900&q=80" alt="Aplicação De PPF" class="ns-card-img">
+            <div class="ns-card-overlay ns-overlay-strong"></div>
+            <div class="ns-ppf-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="22" height="22"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            </div>
+            <div class="ns-card-text">
+              <h3>Aplicação De PPF</h3>
+              <p><em>Película de proteção transparente que preserva a pintura original contra arranhões e impactos.</em></p>
+            </div>
+          </div>
+
+          <!-- Card Insufilm -->
+          <div class="ns-card ns-card-dark">
+            <div class="ns-dark-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="28" height="28"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+            </div>
+            <div class="ns-card-text">
+              <h3>Aplicação Insufilm</h3>
+              <p>Serviço especializado na aplicação de películas de controle solar e antivandalismo.</p>
+            </div>
+          </div>
+
+          <!-- Card CTA azul -->
+          <div class="ns-card ns-card-cta">
+            <a href="agendar.html" class="ns-cta-link">
+              <span>AGENDAR SERVIÇO</span>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" width="20" height="20"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+            </a>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+
+
+
+
+    <!-- ==========================================================================
+         5. COMPARATIVO ANTES/DEPOIS PREMIUM
+         ========================================================================== -->
+    <section id="antes-depois" class="slider-section section-padding">
+      <div class="container">
+        <div class="heading-center reveal-on-scroll">
+          <h2>Transformação <span>Visual Sem Limites</span></h2>
+          <p>Arraste o controle deslizante ou utilize as setas do teclado para visualizar a diferença entre uma pintura exposta a riscos e o brilho líquido da vitrificação Auto Sport.</p>
+        </div>
+
+        <div id="wow-slider" class="slider-container reveal-on-scroll">
+          <!-- Antes -->
+          <div class="slider-before">
+            <img class="slider-img" src="https://images.unsplash.com/photo-1619642751034-765dfdf7c58e?auto=format&fit=crop&w=1200&q=80" alt="Pintura automotiva sem proteção e sem brilho" width="900" height="500">
+            <span class="slider-label label-before">Superfície Sem Proteção</span>
+          </div>
+          
+          <!-- Depois -->
+          <div id="slider-after" class="slider-after">
+            <img class="slider-img" src="https://images.unsplash.com/photo-1618843479313-40f8afb4b4d8?auto=format&fit=crop&w=1200&q=80" alt="Pintura automotiva espelhada e vitrificada" width="900" height="500">
+            <span class="slider-label label-after">Proteção e Vitrificação Auto Sport</span>
+          </div>
+
+          <!-- Separador e Botão da Alça de Vidro -->
+          <div id="slider-handle" class="slider-handle" aria-hidden="true">
+            <div class="slider-handle-button">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="8 17 3 12 8 7"></polyline><polyline points="16 17 21 12 16 7"></polyline></svg>
+            </div>
+          </div>
+
+          <!-- Controle de Acessibilidade -->
+          <input type="range" id="slider-range" class="slider-input-range" min="0" max="100" value="50" aria-label="Controle de antes e depois da pintura do veículo">
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         6.5. DEPOIMENTOS SPLIT COM GOOGLE REVIEW CARDS
+         ========================================================================== -->
+    <section id="depoimentos" class="depoimentos-split-section">
+      <div class="dep-split-grid">
+        
+        <!-- Coluna Esquerda: Imagem Cinemática -->
+        <div class="dep-split-image reveal-on-scroll">
+          <img 
+            src="img/automotive_detailing.png" 
+            alt="Profissional realizando polimento detalhado em carro preto na Auto Sport" 
+            class="dep-img-fill"
+          >
+          <div class="dep-img-overlay"></div>
+        </div>
+
+        <!-- Coluna Direita: Conteúdo & Slider -->
+        <div class="dep-split-content reveal-on-scroll">
+          <!-- Decoração curvas de fundo (SVG) -->
+          <svg class="dep-deco-bg" viewBox="0 0 400 400" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path d="M0 100 Q150 50 300 200 T600 100" stroke="rgba(15, 23, 42, 0.03)" stroke-width="2" fill="none"/>
+            <path d="M0 150 Q180 80 320 250 T650 150" stroke="rgba(15, 23, 42, 0.02)" stroke-width="1.5" fill="none"/>
+          </svg>
+
+          <div class="dep-content-inner">
+            <div class="dep-label">
+              <span class="dep-dot"></span>
+              Resultados Reais
+            </div>
+            
+            <h2 class="dep-title">CONFIANÇA COMPROVADA<br>POR QUEM JÁ EXPERIMENTOU</h2>
+            
+            <p class="dep-subtitle">
+              Mais brilho, proteção e valorização do veículo. É isso que nossos clientes relatam após o atendimento.
+            </p>
+
+            <!-- Testimonial Slider Container -->
+            <div class="dep-slider-wrapper">
+              
+
+
+              <div class="dep-slides-container">
+                
+                <!-- Slide 1 (Active) -->
+                <div class="dep-slide active" data-index="0">
+                  <div class="google-review-card">
+                    <div class="gr-header">
+                      <div class="gr-user">
+                        <div class="gr-avatar" style="background-color: var(--color-blue); color: #ffffff;">JM</div>
+                        <div class="gr-user-info">
+                          <h4>João Martins</h4>
+                          <span>Avaliação verificada</span>
+                        </div>
+                      </div>
+                      <!-- Google Logo Icon (SVG) -->
+                      <svg class="gr-google-logo" viewBox="0 0 24 24" width="22" height="22">
+                        <path fill="#EA4335" d="M12 5.04c1.67 0 3.2.58 4.38 1.69l3.27-3.27C17.67 1.61 14.99 1 12 1 7.35 1 3.39 3.67 1.48 7.56l3.96 3.07C6.44 7.29 9.01 5.04 12 5.04z"/>
+                        <path fill="#4285F4" d="M23.49 12.27c0-.82-.07-1.6-.21-2.27H12v4.51h6.44c-.28 1.48-1.12 2.73-2.38 3.58l3.7 2.87c2.16-1.99 3.43-4.92 3.43-8.69z"/>
+                        <path fill="#FBBC05" d="M5.44 14.47a7.19 7.19 0 0 1 0-4.54L1.48 6.86C.54 8.74 0 10.82 0 13s.54 4.26 1.48 6.14l3.96-3.07z"/>
+                        <path fill="#34A853" d="M12 23c3.24 0 5.96-1.07 7.95-2.91l-3.7-2.87c-1.03.69-2.34 1.1-3.95 1.1-2.99 0-5.56-2.25-6.56-5.59L1.48 15.8C3.39 19.69 7.35 22.3 12 23z"/>
+                      </svg>
+                    </div>
+                    
+                    <div class="gr-stars">
+                      <svg width="16" height="16" viewBox="0 0 24 24" fill="var(--color-gold)" stroke="var(--color-gold)"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                      <svg width="16" height="16" viewBox="0 0 24 24" fill="var(--color-gold)" stroke="var(--color-gold)"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                      <svg width="16" height="16" viewBox="0 0 24 24" fill="var(--color-gold)" stroke="var(--color-gold)"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                      <svg width="16" height="16" viewBox="0 0 24 24" fill="var(--color-gold)" stroke="var(--color-gold)"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                      <svg width="16" height="16" viewBox="0 0 24 24" fill="var(--color-gold)" stroke="var(--color-gold)"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                    </div>
+                    
+                    <p class="gr-text">
+                      “Meu carro parecia novo depois do serviço! O brilho ficou incrível e o interior com cheiro de carro zero. A equipe é super atenciosa e detalhista. Recomendo de olhos fechados!”
+                    </p>
+                    <span class="gr-vehicle-badge">BMW X1</span>
+                  </div>
+                </div>
+
+                <!-- Slide 2 -->
+                <div class="dep-slide" data-index="1">
+                  <div class="google-review-card">
+                    <div class="gr-header">
+                      <div class="gr-user">
+                        <div class="gr-avatar" style="background-color: var(--color-gold); color: #ffffff;">RD</div>
+                        <div class="gr-user-info">
+                          <h4>Rodrigo Drummond</h4>
+                          <span>Avaliação verificada</span>
+                        </div>
+                      </div>
+                      <!-- Google Logo Icon (SVG) -->
+                      <svg class="gr-google-logo" viewBox="0 0 24 24" width="22" height="22">
+                        <path fill="#EA4335" d="M12 5.04c1.67 0 3.2.58 4.38 1.69l3.27-3.27C17.67 1.61 14.99 1 12 1 7.35 1 3.39 3.67 1.48 7.56l3.96 3.07C6.44 7.29 9.01 5.04 12 5.04z"/>
+                        <path fill="#4285F4" d="M23.49 12.27c0-.82-.07-1.6-.21-2.27H12v4.51h6.44c-.28 1.48-1.12 2.73-2.38 3.58l3.7 2.87c2.16-1.99 3.43-4.92 3.43-8.69z"/>
+                        <path fill="#FBBC05" d="M5.44 14.47a7.19 7.19 0 0 1 0-4.54L1.48 6.86C.54 8.74 0 10.82 0 13s.54 4.26 1.48 6.14l3.96-3.07z"/>
+                        <path fill="#34A853" d="M12 23c3.24 0 5.96-1.07 7.95-2.91l-3.7-2.87c-1.03.69-2.34 1.1-3.95 1.1-2.99 0-5.56-2.25-6.56-5.59L1.48 15.8C3.39 19.69 7.35 22.3 12 23z"/>
+                      </svg>
+                    </div>
+                    
+                    <div class="gr-stars">
+                      <svg width="16" height="16" viewBox="0 0 24 24" fill="var(--color-gold)" stroke="var(--color-gold)"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                      <svg width="16" height="16" viewBox="0 0 24 24" fill="var(--color-gold)" stroke="var(--color-gold)"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                      <svg width="16" height="16" viewBox="0 0 24 24" fill="var(--color-gold)" stroke="var(--color-gold)"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                      <svg width="16" height="16" viewBox="0 0 24 24" fill="var(--color-gold)" stroke="var(--color-gold)"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                      <svg width="16" height="16" viewBox="0 0 24 24" fill="var(--color-gold)" stroke="var(--color-gold)"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                    </div>
+                    
+                    <p class="gr-text">
+                      “Apliquei o PPF completo na lataria e nas partes de black piano. O acabamento ficou perfeito, totalmente invisível nas curvas complexas do Porsche. Nas viagens pela BR-101 sinto tranquilidade total contra as pedras.”
+                    </p>
+                    <span class="gr-vehicle-badge">Porsche 911 GTS</span>
+                  </div>
+                </div>
+
+                <!-- Slide 3 -->
+                <div class="dep-slide" data-index="2">
+                  <div class="google-review-card">
+                    <div class="gr-header">
+                      <div class="gr-user">
+                        <div class="gr-avatar" style="background-color: #10b981; color: #ffffff;">GP</div>
+                        <div class="gr-user-info">
+                          <h4>Gabriela Pinheiro</h4>
+                          <span>Avaliação verificada</span>
+                        </div>
+                      </div>
+                      <!-- Google Logo Icon (SVG) -->
+                      <svg class="gr-google-logo" viewBox="0 0 24 24" width="22" height="22">
+                        <path fill="#EA4335" d="M12 5.04c1.67 0 3.2.58 4.38 1.69l3.27-3.27C17.67 1.61 14.99 1 12 1 7.35 1 3.39 3.67 1.48 7.56l3.96 3.07C6.44 7.29 9.01 5.04 12 5.04z"/>
+                        <path fill="#4285F4" d="M23.49 12.27c0-.82-.07-1.6-.21-2.27H12v4.51h6.44c-.28 1.48-1.12 2.73-2.38 3.58l3.7 2.87c2.16-1.99 3.43-4.92 3.43-8.69z"/>
+                        <path fill="#FBBC05" d="M5.44 14.47a7.19 7.19 0 0 1 0-4.54L1.48 6.86C.54 8.74 0 10.82 0 13s.54 4.26 1.48 6.14l3.96-3.07z"/>
+                        <path fill="#34A853" d="M12 23c3.24 0 5.96-1.07 7.95-2.91l-3.7-2.87c-1.03.69-2.34 1.1-3.95 1.1-2.99 0-5.56-2.25-6.56-5.59L1.48 15.8C3.39 19.69 7.35 22.3 12 23z"/>
+                      </svg>
+                    </div>
+                    
+                    <div class="gr-stars">
+                      <svg width="16" height="16" viewBox="0 0 24 24" fill="var(--color-gold)" stroke="var(--color-gold)"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                      <svg width="16" height="16" viewBox="0 0 24 24" fill="var(--color-gold)" stroke="var(--color-gold)"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                      <svg width="16" height="16" viewBox="0 0 24 24" fill="var(--color-gold)" stroke="var(--color-gold)"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                      <svg width="16" height="16" viewBox="0 0 24 24" fill="var(--color-gold)" stroke="var(--color-gold)"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                      <svg width="16" height="16" viewBox="0 0 24 24" fill="var(--color-gold)" stroke="var(--color-gold)"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                    </div>
+                    
+                    <p class="gr-text">
+                      “Fiz a higienização com detalhamento interno completo e impermeabilização dos bancos de couro. O cuidado deles com o veículo é extremo. O site é muito prático e o atendimento é impecável do início ao fim.”
+                    </p>
+                    <span class="gr-vehicle-badge">Toyota Hilux SRX</span>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+
+            <!-- Botão CTA alinhado ao design do site -->
+            <a href="agendar.html" class="btn-dep-cta">
+              AGENDAR SERVIÇO
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+            </a>
+
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         7. DETAILED FAQ ACCORDION (TRANSITION DE GRID RICA)
+         ========================================================================== -->
+    <!-- ==========================================================================
+         7. DETAILED FAQ WITH MASCOT (LAYOUT SPLIT PREMIUM COM ACORDEÃO)
+         ========================================================================== -->
+    <section id="perguntas" class="faq-section">
+      <div class="container faq-animada-grid">
+        
+        <!-- Coluna Esquerda: Mascote Grande -->
+        <div class="faq-mascote-wrapper reveal-on-scroll">
+          <div class="mascote-container-large">
+            <!-- Círculo de luz decorativo por trás do mascote -->
+            <div class="mascote-bg-glow-large"></div>
+            
+            <!-- Balão de Fala do Mascote -->
+            <div class="mascote-chat-bubble-faq">
+              <p>Ficou com alguma dúvida sobre estética? Clique nas perguntas ao lado que eu te respondo!</p>
+              <span class="bubble-arrow-faq"></span>
+            </div>
+            
+            <!-- Imagem do Mascote -->
+            <img src="img/mascote.png" alt="Mascote Auto Sport Especialista em Estética Automotiva" class="mascote-img-large">
+          </div>
+        </div>
+
+        <!-- Coluna Direita: Acordeão de Dúvidas -->
+        <div class="faq-accordion-wrapper reveal-on-scroll">
+          <div class="faq-header-content">
+            <span class="faq-tag">Tire Suas Dúvidas</span>
+            <h2 class="faq-grid-title">Perguntas Frequentes</h2>
+            <p class="faq-grid-subtitle">Clique nas perguntas abaixo para ver as respostas do nosso especialista.</p>
+          </div>
+
+          <div class="accordion-container">
+            <!-- FAQ 1 -->
+            <div class="accordion-item">
+              <button class="accordion-trigger" aria-expanded="false" aria-controls="faq-ans-1">
+                O PPF protege realmente contra pedriscos e detritos?
+                <svg class="accordion-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+              </button>
+              <div id="faq-ans-1" class="accordion-content" role="region">
+                <div class="accordion-content-inner">
+                  Sim! O Paint Protection Film (PPF) é uma película transparente de poliuretano com altíssima absorção física de energia. Ela cria uma barreira resistente contra impactos de cascalhos e pedras nas estradas, protegendo a pintura original contra quebras de verniz e micro-arranhões.
+                </div>
+              </div>
+            </div>
+
+            <!-- FAQ 2 -->
+            <div class="accordion-item">
+              <button class="accordion-trigger" aria-expanded="false" aria-controls="faq-ans-2">
+                Quanto tempo dura a vitrificação cerâmica 9H?
+                <svg class="accordion-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+              </button>
+              <div id="faq-ans-2" class="accordion-content" role="region">
+                <div class="accordion-content-inner">
+                  Na Auto Sport, trabalhamos apenas com revestimentos nano-cerâmicos importados certificados com dureza real 9H. Com a lavagem correta recomendada, a hidrofobicidade e o brilho intenso duram até 3 anos, impedindo a oxidação natural pelo sol e facilitando as lavagens.
+                </div>
+              </div>
+            </div>
+
+            <!-- FAQ 3 -->
+            <div class="accordion-item">
+              <button class="accordion-trigger" aria-expanded="false" aria-controls="faq-ans-3">
+                Quais as formas de pagamento aceitas pela Auto Sport?
+                <svg class="accordion-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+              </button>
+              <div id="faq-ans-3" class="accordion-content" role="region">
+                <div class="accordion-content-inner">
+                  Oferecemos 5% de desconto real para pagamento à vista no PIX, ou parcelamento em até 12 vezes sem juros nos cartões de crédito. A simulação final pode ser feita diretamente no nosso simulador de pagamentos do site.
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         7.5. SEÇÃO DE LOCALIZAÇÃO FULL-WIDTH (ESTILO GOOGLE MAPS PREMIUM)
+         ========================================================================== -->
+    <section id="localizacao" class="localizacao-section-full">
+      <!-- Card Flutuante de Informações (Overlay no Canto Superior Esquerdo) -->
+      <div class="localizacao-overlay-card reveal-on-scroll">
+        <div class="loc-card-header">
+          <div class="loc-card-brand">
+            <h3>Auto Sport</h3>
+            <p>Centro Automotivo</p>
+          </div>
+          <a href="https://maps.google.com/?q=Av.+Joao+Felipe+Calmon,+602+-+Centro,+Linhares+-+ES,+29900-022" target="_blank" rel="noopener" class="loc-card-route-btn" aria-label="Traçar rota no Google Maps">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="3 11 22 2 13 21 11 13 3 11"></polygon></svg>
+          </a>
+        </div>
+        
+        <div class="loc-card-body">
+          <p class="loc-card-address">Av. João Felipe Calmon, 602 - Centro, Linhares - ES, 29900-022</p>
+          
+          <div class="loc-card-rating">
+            <span class="rating-num">5.0</span>
+            <div class="rating-stars">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+            </div>
+            <span class="rating-count">(450+ avaliações)</span>
+          </div>
+
+          <div class="loc-card-extra">
+            <div class="extra-item">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+              <span>Aberto • Horário Especial de Detailing</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="loc-card-actions">
+          <a href="https://maps.google.com/?q=Av.+Joao+Felipe+Calmon,+602+-+Centro,+Linhares+-+ES,+29900-022" target="_blank" rel="noopener" class="loc-action-btn primary">
+            Como Chegar
+          </a>
+          <a href="https://wa.me/5527998153211" target="_blank" rel="noopener" class="loc-action-btn secondary">
+            WhatsApp
+          </a>
+        </div>
+      </div>
+
+      <!-- Iframe de Mapa em Largura Total -->
+      <div class="localizacao-map-container-full">
+        <iframe 
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3737.525547632646!2d-40.067425124976765!3d-19.390815981881723!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xb618386b976077%3A0xbc5362cd9dbffbe5!2sAv.%20Jo%C3%A3o%20Felipe%20Calmon%2C%20602%20-%20Centro%2C%20Linhares%20-%20ES%2C%2029900-022!5e0!3m2!1spt-BR!2sbr!4v1716584288000!5m2!1spt-BR!2sbr" 
+          width="100%" 
+          height="100%" 
+          style="border:0;" 
+          allowfullscreen="" 
+          loading="lazy" 
+          referrerpolicy="no-referrer-when-downgrade"
+          class="google-map-iframe"
+        ></iframe>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ==========================================================================
+       8. ENTERPRISE FOOTER & MAPS
+       ========================================================================== -->
+  <footer class="footer">
+    <div class="container footer-grid">
+      <div class="footer-info">
+        <img src="img/logo-autosport.png" alt="Auto Sport Centro Automotivo" class="footer-logo-img">
+        <p>Estética automotiva de padrão global e proteção cirúrgica com certificação internacional em Linhares, ES.</p>
+        <div class="footer-socials">
+          <a href="https://www.instagram.com/autosportcentroautomotivo" class="social-link" aria-label="Siga-nos no Instagram" target="_blank" rel="noopener">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+          </a>
+        </div>
+      </div>
+
+      <div class="footer-links">
+        <h4>Links Úteis</h4>
+        <ul>
+          <li><a href="#servicos">Serviços</a></li>
+          <li><a href="#antes-depois">Antes & Depois</a></li>
+          <li><a href="agendar.html">Agendar Online</a></li>
+          <li><a href="#perguntas">Perguntas</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-map">
+        <h4>Onde Estamos</h4>
+        <div class="map-container">
+          <iframe 
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1m4!2s-19.3908!3d-40.0678!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xb611c0f0d2c3df%3A0xe10ad5c0a0c4f87!2sLinhares%2C%20ES!5e0!3m2!1spt-BR!2sbr!4v1700000000000!5m2!1spt-BR!2sbr" 
+            width="100%" 
+            height="100%" 
+            style="border:0;" 
+            allowfullscreen="" 
+            loading="lazy" 
+            referrerpolicy="no-referrer-when-downgrade" 
+            title="Localização física da Auto Sport Centro Automotivo em Linhares, ES">
+          </iframe>
+        </div>
+      </div>
+    </div>
+
+    <div class="container footer-bottom">
+      <p>&copy; 2026 Auto Sport Centro Automotivo. Todos os direitos reservados. Linhares, ES.</p>
+      <div class="footer-bottom-links">
+        <a href="agendar.html">Termos</a>
+        <a href="agendar.html">Privacidade</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ==========================================================================
+       9. CUSTOM WHATSAPP FLOAT BUTTON & MINI CHAT WIDGET
+       ========================================================================== -->
+  <div class="wa-widget-container">
+    <button id="wa-float-btn" class="wa-float-btn" aria-label="Abrir chat de suporte do WhatsApp" aria-expanded="false" aria-controls="wa-chat-window">
+      <div class="wa-pulse-ring"></div>
+      <div id="wa-notify-dot" class="wa-notify-dot"></div>
+      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg>
+    </button>
+
+    <div id="wa-chat-window" class="wa-chat-window" aria-hidden="true" role="dialog" aria-labelledby="wa-chat-title">
+      <div class="wa-chat-header">
+        <div class="wa-chat-profile">
+          <div class="wa-profile-avatar" aria-hidden="true">
+            AS
+            <div class="wa-avatar-status"></div>
+          </div>
+          <div class="wa-profile-info">
+            <h4 id="wa-chat-title">Suporte Auto Sport</h4>
+            <span>Online Agora</span>
+          </div>
+        </div>
+        <button id="wa-chat-close" class="wa-chat-close" aria-label="Fechar janela do chat">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
         </button>
       </div>
-      <div class="modal-body">
-        <div class="vehicles-list-grid" id="modal-vehicles-list">
-          <!-- Gerado dinamicamente -->
+
+      <div class="wa-chat-body">
+        <div id="wa-msg-typing" class="wa-msg-typing" aria-hidden="true">
+          <div class="typing-dots">
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
         </div>
+
+        <div id="wa-msg-welcome" class="wa-msg wa-msg-received" style="display: none;">
+          Olá! Sou o assistente virtual da Auto Sport Centro Automotivo. Como posso ajudar a proteger ou valorizar o seu carro hoje?
+          <span class="wa-msg-time" aria-hidden="true">Atendimento</span>
+        </div>
+
+        <div id="wa-replies-group" class="wa-chat-replies" style="display: none;">
+          <button class="wa-reply-btn" data-reply-type="budget">
+            Fazer orçamento no site
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
+          </button>
+          <button class="wa-reply-btn" data-reply-type="general">
+            Tirar dúvidas de estética
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
+          </button>
+          <button class="wa-reply-btn" data-reply-type="location">
+            Onde fica a Auto Sport?
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
+          </button>
+        </div>
+      </div>
+
+      <div class="wa-chat-footer">
+        <input type="text" id="wa-chat-input" class="wa-input-box" placeholder="Digite sua mensagem…" aria-label="Mensagem WhatsApp">
+        <button id="wa-send-btn" class="wa-send-btn" aria-label="Enviar mensagem">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
+        </button>
       </div>
     </div>
   </div>
 
   <!-- TOAST DE NOTIFICAÇÃO -->
-  <div id="toast" class="toast hidden">
+  <div id="toast" class="toast" role="alert" aria-live="assertive">
     <div class="toast-content">
-      <span class="toast-icon">
+      <span class="toast-icon" id="toast-icon">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 8 12 12 16 14"></polyline></svg>
       </span>
-      <p id="toast-message">Configuração salva com sucesso!</p>
+      <p id="toast-message" class="toast-message">Mensagem de toast padrão...</p>
     </div>
   </div>
 
-  <!-- Biblioteca qrcode-generator para desenhar o QR code direto no Canvas via Javascript (cdnjs) -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcode-generator/1.4.4/qrcode.min.js"></script>
-  <script src="app.js"></script>
+  <!-- Flatpickr JS & pt-BR Locale -->
+  <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+  <script src="https://cdn.jsdelivr.net/npm/flatpickr/dist/l10ns/pt.js"></script>
+
+  <!-- Lógica de Interações e Carrossel de Vídeo (Padrão UI/UX Pro Max) -->
+  <script src="js/main.js" defer></script>
+  <script src="js/whatsapp-chat.js" defer></script>
 </body>
 </html>
