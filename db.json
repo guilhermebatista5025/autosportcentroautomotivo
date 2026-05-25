@@ -1,17 +1,3 @@
 {
-  "clientes": {
-    "152136465789039@lid": {
-      "phone": "152136465789039@lid",
-      "nome": "Glauciele Batista Reis",
-      "cpf": "18817533793",
-      "timestamp": "2026-05-23T01:05:49.073Z",
-      "veiculos": [
-        {
-          "modelo": "Toyota Corolla",
-          "placa": "PPU-5090",
-          "porte": "Pequeno"
-        }
-      ]
-    }
-  }
+  "clientes": {}
 }

@@ -20,7 +20,7 @@
     <!-- SIDEBAR DE NAVEGAÇÃO -->
     <aside class="sidebar">
       <div class="sidebar-header">
-        <img src="logo.png" alt="CodeHighTech Logo" class="sidebar-logo">
+        <img src="../img/logo.png" alt="CodeHighTech Logo" class="sidebar-logo">
       </div>
 
       <nav class="sidebar-menu">
@@ -622,10 +622,13 @@
 
   <!-- MODAL DE DETALHES DE VEÍCULOS (CRM) -->
   <div id="vehicles-modal" class="modal-backdrop hidden">
-    <div class="modal-box vehicles-modal-box">
+    <div class="modal-card vehicles-modal-box">
       <div class="modal-header">
-        <h3 id="modal-vehicles-client-name">Veículos do Cliente</h3>
-        <button id="btn-close-vehicles-modal" class="close-modal-btn">
+        <div class="modal-header-title">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21V5a2 2 0 0 0-2-2H7a2 2 0 0 0-2 2v16"></path><path d="M1 21h22"></path><path d="M8 7h4"></path><path d="M8 11h4"></path><path d="M8 15h4"></path></svg>
+          <h3 id="modal-vehicles-client-name">Veículos do Cliente</h3>
+        </div>
+        <button id="btn-close-vehicles-modal" class="modal-close-btn">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
         </button>
       </div>

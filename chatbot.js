@@ -280,6 +280,25 @@ client.on("message", async (msg) => {
     // ❌ IGNORA GRUPOS
     if (!msg.from || msg.from.endsWith("@g.us")) return;
 
+    // Resolva o JID real se for um número fictício do tipo @lid (Linked Device JID)
+    let contact = null;
+    try {
+      contact = await msg.getContact();
+      if (contact && contact.id && contact.id._serialized) {
+        if (contact.id._serialized.endsWith("@c.us") && msg.from.endsWith("@lid")) {
+          console.log(`🔄 Resolvendo número fictício LID [${msg.from}] para o número real [${contact.id._serialized}]`);
+          Object.defineProperty(msg, "from", {
+            value: contact.id._serialized,
+            writable: true,
+            configurable: true,
+            enumerable: true
+          });
+        }
+      }
+    } catch (contactErr) {
+      console.error("⚠️ Erro ao resolver contato real para", msg.from, ":", contactErr.message);
+    }
+
     const chat = await msg.getChat();
     if (chat.isGroup) return;
 
@@ -344,9 +363,10 @@ client.on("message", async (msg) => {
         );
       } else {
         // CLIENTE NOVO: Inicia cadastro!
+        const whatsappName = msg.pushname || (contact ? contact.pushname : null) || "Cliente";
         userState[msg.from] = {
           from: msg.from,
-          pushname: "Cliente",
+          pushname: whatsappName,
           etapa: "reg_nome",
           timestamp: new Date().toISOString(),
           respostas: [
