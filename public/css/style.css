@@ -426,8 +426,6 @@ button {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transform: scale(1.60); /* Zoom para cortar bordas pretas embutidas nos arquivos de video */
-  transform-origin: center center;
   /* Quando o vídeo falha (display:none via JS), o poster/background cobre a área */
   background: inherit;
 }
@@ -1581,6 +1579,10 @@ button {
   overflow: hidden;
 }
 
+.slider-before {
+  z-index: 1;
+}
+
 .slider-img {
   width: 100%;
   height: 100%;
@@ -1612,12 +1614,12 @@ button {
   border: 1px solid var(--glass-border);
 }
 .label-before {
-  left: 24px;
-  border-left: 3px solid var(--color-red);
+  right: 24px;
+  border-right: 3px solid var(--color-red);
 }
 .label-after {
-  right: 24px;
-  border-right: 3px solid var(--color-blue);
+  left: 24px;
+  border-left: 3px solid var(--color-blue);
 }
 
 .slider-handle {
