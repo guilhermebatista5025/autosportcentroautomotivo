@@ -1,7 +1,7 @@
 /**
  * AUTO SPORT - Script de Download de Vídeos do Hero
  * Execute: node baixar-videos.js
- * Os vídeos serão salvos em public/videos/
+ * Os vídeos serão salvos em videos/
  */
 
 const https = require('https');
@@ -9,7 +9,7 @@ const http = require('http');
 const fs = require('fs');
 const path = require('path');
 
-const OUTPUT_DIR = path.join(__dirname, 'public', 'videos');
+const OUTPUT_DIR = path.join(__dirname, 'videos');
 fs.mkdirSync(OUTPUT_DIR, { recursive: true });
 
 // Lista de videos a baixar (com fallbacks)
@@ -125,7 +125,7 @@ async function run() {
       console.log(`   Fonte: ${url.substring(0, 70)}...`);
       try {
         const size = await downloadUrl(url, destPath);
-        console.log(`\n   ✅ Salvo em public/videos/${video.filename} (${size})\n`);
+        console.log(`\n   ✅ Salvo em videos/${video.filename} (${size})\n`);
         success = true;
         break;
       } catch (err) {
@@ -144,7 +144,7 @@ async function run() {
     return fs.existsSync(p) && fs.statSync(p).size > 100000;
   }).length;
 
-  console.log(`✅ ${downloaded}/${videoQueue.length} vídeos prontos em public/videos/`);
+  console.log(`✅ ${downloaded}/${videoQueue.length} vídeos prontos em videos/`);
   if (downloaded === videoQueue.length) {
     console.log('\n🎬 Todos os vídeos prontos! Reinicie o servidor para aplicar.');
   } else {

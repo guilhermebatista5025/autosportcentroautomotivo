@@ -14,7 +14,13 @@ const path = require("path");
 const app = express();
 const PORT = process.env.PORT || 3000;
 app.use(express.json());
-app.use(express.static(path.join(__dirname, "public")));
+
+// Servir pastas de assets públicos de forma individual e segura
+app.use("/css", express.static(path.join(__dirname, "css")));
+app.use("/js", express.static(path.join(__dirname, "js")));
+app.use("/img", express.static(path.join(__dirname, "img")));
+app.use("/videos", express.static(path.join(__dirname, "videos")));
+app.use("/admin", express.static(path.join(__dirname, "admin")));
 
 // =====================================
 // CARREGAMENTO CONFIGURAÇÃO DINÂMICA
@@ -1173,17 +1179,26 @@ app.get("/api/logs/stream", (req, res) => {
 
 // Rota para servir a tela de agendamento separada
 app.get("/agendar", (req, res) => {
-  res.sendFile(path.join(__dirname, "public", "agendar.html"));
+  res.sendFile(path.join(__dirname, "pages", "agendar.html"));
+});
+app.get("/agendar.html", (req, res) => {
+  res.sendFile(path.join(__dirname, "pages", "agendar.html"));
 });
 
-// Rota para servir o painel administrativo
-app.get("/admin", (req, res) => {
-  res.sendFile(path.join(__dirname, "public", "admin", "index.html"));
+// Rota para servir a tela de login e cadastro
+app.get("/login", (req, res) => {
+  res.sendFile(path.join(__dirname, "pages", "login.html"));
+});
+app.get("/login.html", (req, res) => {
+  res.sendFile(path.join(__dirname, "pages", "login.html"));
 });
 
 // Rota padrão para servir o site institucional
 app.get("/", (req, res) => {
-  res.sendFile(path.join(__dirname, "public", "index.html"));
+  res.sendFile(path.join(__dirname, "index.html"));
+});
+app.get("/index.html", (req, res) => {
+  res.sendFile(path.join(__dirname, "index.html"));
 });
 
 // =====================================

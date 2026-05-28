@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Área do Cliente & Admin | Auto Sport Centro Automotivo</title>
+  <meta name="description" content="Acesse sua área de cliente na Auto Sport Centro Automotivo para gerenciar seus agendamentos, ou acesse o painel administrativo.">
+  <meta name="robots" content="noindex, nofollow">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+  <!-- Custom Stylesheet -->
+  <link rel="stylesheet" href="../css/login.css">
+</head>
+<body>
+
+  <div class="split-layout">
+    
+    <!-- LEFT COLUMN: VISUAL COVER PANEL (Desktop only) -->
+    <aside class="cover-pane" aria-hidden="true">
+      
+      <div class="cover-content">
+        <div class="cover-logo">
+          <img src="../img/logo-autosport.png" alt="Auto Sport Centro Automotivo" class="cover-logo-img">
+        </div>
+        <h2>Estética Premium &<br><span>Proteção Avançada</span></h2>
+        <p>Acesse sua conta para agendar serviços detalhados, monitorar o histórico e simular orçamentos em segundos.</p>
+        
+        <div class="cover-features">
+          <div class="feature-item">
+            <div class="feature-icon">✓</div>
+            <span>Vitrificação Cerâmica Certified 9H</span>
+          </div>
+          <div class="feature-item">
+            <div class="feature-icon">✓</div>
+            <span>Película PPF Autoregenerativa Premium</span>
+          </div>
+          <div class="feature-item">
+            <div class="feature-icon">✓</div>
+            <span>Agendamento Integrado WhatsApp CRM</span>
+          </div>
+        </div>
+      </div>
+    </aside>
+
+    <!-- RIGHT COLUMN: INTERACTIVE AUTH PANE -->
+    <section class="form-pane">
+      <div class="pane-glow-orb" aria-hidden="true"></div>
+
+      <div class="auth-card-wrapper">
+        
+        <!-- Back floating button -->
+        <div class="back-btn-wrapper">
+          <button class="back-btn" onclick="goHome()" aria-label="Voltar para a página inicial">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+            Voltar ao Site
+          </button>
+        </div>
+
+        <!-- Auth Card -->
+        <main class="auth-card">
+          
+          <!-- Mobile logo header -->
+          <div class="mobile-logo-header">
+            <a href="../index.html" class="mobile-logo-link">
+              <img src="../img/logo-autosport.png" alt="Auto Sport Centro Automotivo" class="mobile-logo-img">
+            </a>
+          </div>
+
+          <div class="auth-header-texts">
+            <h1 class="auth-card-title" id="auth-title">Acesse sua Conta</h1>
+            <p class="auth-card-subtitle" id="auth-subtitle">Insira suas credenciais para continuar.</p>
+          </div>
+
+          <!-- Selector: Profile chips controls -->
+          <div class="profile-chips" role="radiogroup" aria-label="Selecione o tipo de acesso">
+            <button class="chip-btn active" id="profile-client" onclick="switchProfile('client')" role="radio" aria-checked="true">
+              Área do Cliente
+            </button>
+            <button class="chip-btn" id="profile-admin" onclick="switchProfile('admin')" role="radio" aria-checked="false">
+              Administrador
+            </button>
+          </div>
+
+          <!-- Tabs Chips (Only for client profile) -->
+          <div class="tabs-chips" id="client-tabs-wrapper">
+            <button class="tab-chip active" id="tab-login" onclick="switchTab('login')">Entrar</button>
+            <button class="tab-chip" id="tab-register" onclick="switchTab('register')">Criar Conta</button>
+          </div>
+
+          <!-- ==========================================
+               PANEL: LOGIN (ENTRAR)
+               ========================================== -->
+          <div class="form-panel active" id="panel-login">
+            <form id="form-login" onsubmit="handleLoginSubmit(event)" novalidate>
+              
+              <div class="form-group">
+                <div class="input-wrapper">
+                  <input type="email" id="login-email" class="form-input" placeholder=" " required autocomplete="email">
+                  <label for="login-email" class="form-label" id="login-email-label">E-mail ou CPF</label>
+                  <div class="input-icon">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+                  </div>
+                </div>
+                <span class="error-msg" id="login-email-error">Insira um e-mail ou CPF válido.</span>
+              </div>
+
+              <div class="form-group">
+                <div class="input-wrapper">
+                  <input type="password" id="login-password" class="form-input" placeholder=" " required autocomplete="current-password">
+                  <label for="login-password" class="form-label">Sua Senha</label>
+                  <div class="input-icon">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+                  </div>
+                  <button type="button" class="toggle-password-btn" onclick="togglePasswordVisibility('login-password')" aria-label="Exibir senha">
+                    <svg class="eye-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>
+                  </button>
+                </div>
+                <span class="error-msg" id="login-password-error">A senha é obrigatória.</span>
+              </div>
+
+              <div class="options-row" id="login-options-row">
+                <label class="remember-me">
+                  <input type="checkbox" id="login-remember">
+                  <span>Lembrar acesso</span>
+                </label>
+                <a href="#" class="forgot-link" onclick="triggerForgotPassword(event)">Esqueceu a senha?</a>
+              </div>
+
+              <div class="form-actions">
+                <button type="submit" class="btn-submit" id="btn-login-submit">
+                  <span>Acessar Conta</span>
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" width="18" height="18"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                </button>
+              </div>
+
+              <!-- Social Sim (hidden in admin mode) -->
+              <div id="login-social-section">
+                <div class="divider-row">
+                  <span>Ou acesse com</span>
+                </div>
+
+                <div class="social-logins">
+                  <button type="button" class="social-btn" onclick="handleSocialSim('Google')">
+                    <svg viewBox="0 0 24 24" width="18" height="18">
+                      <path fill="#EA4335" d="M12 5.04c1.67 0 3.2.58 4.38 1.69l3.27-3.27C17.67 1.61 14.99 1 12 1 7.35 1 3.39 3.67 1.48 7.56l3.96 3.07C6.44 7.29 9.01 5.04 12 5.04z"/>
+                      <path fill="#4285F4" d="M23.49 12.27c0-.82-.07-1.6-.21-2.27H12v4.51h6.44c-.28 1.48-1.12 2.73-2.38 3.58l3.7 2.87c2.16-1.99 3.43-4.92 3.43-8.69z"/>
+                      <path fill="#FBBC05" d="M5.44 14.47a7.19 7.19 0 0 1 0-4.54L1.48 6.86C.54 8.74 0 10.82 0 13s.54 4.26 1.48 6.14l3.96-3.07z"/>
+                      <path fill="#34A853" d="M12 23c3.24 0 5.96-1.07 7.95-2.91l-3.7-2.87c-1.03.69-2.34 1.1-3.95 1.1-2.99 0-5.56-2.25-6.56-5.59L1.48 15.8C3.39 19.69 7.35 22.3 12 23z"/>
+                    </svg>
+                    Google
+                  </button>
+                  <button type="button" class="social-btn" onclick="handleSocialSim('Apple')">
+                    <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
+                      <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M15.97 4.17c.66-.81 1.11-1.93.99-3.06-1 .04-2.2.67-2.92 1.49-.62.71-1.16 1.85-1.01 2.96 1.12.09 2.27-.58 2.94-1.39z"/>
+                    </svg>
+                    Apple
+                  </button>
+                </div>
+              </div>
+
+              <!-- Admin Credentials Helper -->
+              <div class="hint-box" id="admin-credentials-hint" style="display: none;">
+                <strong>⚙️ Credenciais de Teste Admin:</strong>
+                <span>E-mail: <code>admin@autosport.com</code></span>
+                <span>Senha: <code>admin123</code></span>
+              </div>
+
+            </form>
+          </div>
+
+          <!-- ==========================================
+               PANEL: REGISTER (CADASTRAR)
+               ========================================== -->
+          <div class="form-panel" id="panel-register">
+            
+            <!-- Standard Client Register Form -->
+            <form id="form-register" onsubmit="handleRegisterSubmit(event)" novalidate>
+              
+              <div class="form-group">
+                <div class="input-wrapper">
+                  <input type="text" id="reg-name" class="form-input" placeholder=" " required autocomplete="name">
+                  <label for="reg-name" class="form-label">Nome Completo</label>
+                  <div class="input-icon">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+                  </div>
+                </div>
+                <span class="error-msg" id="reg-name-error">Insira o seu nome completo.</span>
+              </div>
+
+              <div class="form-group">
+                <div class="input-wrapper">
+                  <input type="email" id="reg-email" class="form-input" placeholder=" " required autocomplete="email">
+                  <label for="reg-email" class="form-label">E-mail Principal</label>
+                  <div class="input-icon">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+                  </div>
+                </div>
+                <span class="error-msg" id="reg-email-error">Insira um endereço de e-mail válido.</span>
+              </div>
+
+              <div class="form-group">
+                <div class="input-wrapper">
+                  <input type="tel" id="reg-phone" class="form-input" placeholder=" " required autocomplete="tel" oninput="maskPhone(this)">
+                  <label for="reg-phone" class="form-label">WhatsApp (Celular)</label>
+                  <div class="input-icon">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+                  </div>
+                </div>
+                <span class="error-msg" id="reg-phone-error">Insira um WhatsApp válido (DDD + número).</span>
+              </div>
+
+              <div class="form-group">
+                <div class="input-wrapper">
+                  <input type="text" id="reg-cpf" class="form-input" placeholder=" " required oninput="maskCPF(this)">
+                  <label for="reg-cpf" class="form-label">CPF (Ficha CRM)</label>
+                  <div class="input-icon">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="3" y1="10" x2="21" y2="10"></line><line x1="8" y1="14" x2="8" y2="14.01"></line><line x1="12" y1="14" x2="12" y2="14.01"></line><line x1="16" y1="14" x2="16" y2="14.01"></line></svg>
+                  </div>
+                </div>
+                <span class="error-msg" id="reg-cpf-error">Insira um CPF válido.</span>
+              </div>
+
+              <div class="form-group">
+                <div class="input-wrapper">
+                  <input type="password" id="reg-password" class="form-input" placeholder=" " required autocomplete="new-password">
+                  <label for="reg-password" class="form-label">Crie uma Senha</label>
+                  <div class="input-icon">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+                  </div>
+                  <button type="button" class="toggle-password-btn" onclick="togglePasswordVisibility('reg-password')" aria-label="Exibir senha">
+                    <svg class="eye-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>
+                  </button>
+                </div>
+                <span class="error-msg" id="reg-password-error">A senha deve ter no mínimo 6 caracteres.</span>
+              </div>
+
+              <div class="options-row" style="margin-bottom: 24px;">
+                <label class="remember-me" style="align-items: flex-start;">
+                  <input type="checkbox" id="reg-terms" required style="margin-top: 4px;">
+                  <span>Eu aceito os <a href="#" class="forgot-link">Termos de Uso</a> e <a href="#" class="forgot-link">Privacidade</a>.</span>
+                </label>
+              </div>
+
+              <div class="form-actions">
+                <button type="submit" class="btn-submit">
+                  <span>Criar Minha Conta</span>
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" width="18" height="18"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                </button>
+              </div>
+            </form>
+
+            <!-- Admin Registration Notice (strictly restrict auto-register) -->
+            <div class="admin-only-notice" id="admin-reg-notice" style="display: none;">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path><line x1="12" y1="9" x2="12" y2="13"></line><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>
+              <p><strong>Acesso Restrito:</strong> Não é permitido o auto-cadastro de novos administradores no sistema público.</p>
+              <p style="margin-top: 8px; font-size: 0.8rem;">Entre em contato com o suporte ou gestor de TI da Auto Sport para registrar credenciais corporativas.</p>
+            </div>
+
+          </div>
+
+        </main>
+
+      </div>
+    </section>
+
+  </div>
+
+  <!-- TOAST NOTIFICATIONS -->
+  <div id="toast" class="toast" role="alert" aria-live="assertive">
+    <div class="toast-icon success" id="toast-icon-wrapper">
+      <svg id="toast-svg-success" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+    </div>
+    <p id="toast-msg-text" class="toast-message">Notificação geral...</p>
+  </div>
+
+    <!-- Custom JavaScript Logic -->
+  <script src="../js/login.js" defer></script>
+</body>
+</html>

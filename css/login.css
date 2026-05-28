@@ -1,0 +1,707 @@
+/* ==========================================================================
+   DESIGN SYSTEM & VARIABLES (PREMIUM DARK SYSTEM)
+   ========================================================================== */
+:root {
+  --color-blue: #1d4ed8;
+  --color-blue-light: #2563eb;
+  --color-blue-dark: #1e40af;
+  --color-blue-deep: #1e3a8a;
+  --color-gold: #f59e0b;
+  --bg-page: #080c14; /* Azul escuro quase preto ultra luxuoso */
+  --bg-card: #111827; /* Charcoal black */
+  --border-color: rgba(255, 255, 255, 0.06);
+  --border-focus: #2563eb;
+  --text-primary: #ffffff;
+  --text-body: #cbd5e1;
+  --text-muted: #64748b;
+  --font-title: 'Outfit', 'Inter', sans-serif;
+  --font-body: 'Inter', sans-serif;
+  --radius-lg: 20px;
+  --radius-md: 12px;
+  --radius-sm: 8px;
+  --transition-normal: 250ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-body);
+  background-color: var(--bg-page);
+  color: var(--text-body);
+  min-height: 100vh;
+  display: flex;
+  overflow-x: hidden;
+  line-height: 1.6;
+}
+
+/* ==========================================================================
+   SPLIT LAYOUT VIRTUAL ENGINE (DESKTOP SPLIT / MOBILE SINGLE)
+   ========================================================================== */
+.split-layout {
+  display: flex;
+  width: 100%;
+  min-height: 100vh;
+  position: relative;
+}
+
+/* 1. COVER PANEL (ESQUERDA - CINEMÁTICO LUXUOSO) */
+.cover-pane {
+  flex: 1.2;
+  background: linear-gradient(to right, rgba(8, 12, 20, 0.95) 0%, rgba(8, 12, 20, 0.7) 35%, rgba(8, 12, 20, 0.2) 65%, rgba(8, 12, 20, 0) 100%), url('../img/login_bg.png') no-repeat 60% center;
+  background-size: cover;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 80px;
+  border-right: 1px solid var(--border-color);
+}
+
+.cover-content {
+  position: relative;
+  z-index: 2;
+  max-width: 480px;
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.9);
+  transform: translateY(-40px); /* Sobe todo o bloco de texto (logo, títulos e diferenciais) para cima */
+}
+
+.cover-logo {
+  margin-bottom: clamp(32px, 6vw, 64px); /* Mantém o espaçamento no fluxo do documento */
+  transform: translateY(50px); /* Desloca APENAS a logo para baixo, sem mover o título! */
+}
+
+.cover-logo-img {
+  max-width: clamp(220px, 20vw, 320px); /* Aumenta o tamanho da logo */
+  height: auto;
+  display: block;
+}
+
+.cover-content h2 {
+  font-family: var(--font-title);
+  font-size: clamp(2rem, 2.5vw, 2.8rem);
+  font-weight: 900;
+  line-height: 1.15;
+  letter-spacing: -1px;
+  color: #ffffff;
+  margin-bottom: 20px;
+}
+
+.cover-content h2 span {
+  background: linear-gradient(135deg, var(--color-blue-light) 0%, #60a5fa 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 0 0 30px rgba(59, 130, 246, 0.2);
+}
+
+.cover-content p {
+  font-size: 1.02rem;
+  color: #94a3b8;
+  line-height: 1.7;
+  margin-bottom: clamp(24px, 4vw, 48px);
+}
+
+/* Checklist premium no painel lateral */
+.cover-features {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.feature-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: #cbd5e1;
+}
+
+.feature-icon {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: rgba(37, 99, 235, 0.15);
+  border: 1px solid rgba(37, 99, 235, 0.3);
+  color: var(--color-blue-light);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.8rem;
+  font-weight: 900;
+  flex-shrink: 0;
+}
+
+/* 2. FORM PANEL (DIREITA - CLEAN & FORM CARD) */
+.form-pane {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 40px;
+  background-color: var(--bg-page);
+  position: relative;
+}
+
+/* Glowing orb no painel da direita */
+.pane-glow-orb {
+  position: absolute;
+  width: 40vw;
+  height: 40vw;
+  background: radial-gradient(circle, rgba(37, 99, 235, 0.08) 0%, transparent 70%);
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  filter: blur(100px);
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* ==========================================================================
+   THE AUTH CARD
+   ========================================================================== */
+.auth-card-wrapper {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: 420px;
+}
+
+.back-btn-wrapper {
+  margin-bottom: 24px;
+  display: flex;
+  justify-content: flex-start;
+}
+
+.back-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: #ffffff;
+  font-family: var(--font-title);
+  font-weight: 700;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  padding: 10px 18px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-sm);
+  transition: all var(--transition-normal);
+  cursor: pointer;
+}
+
+.back-btn:hover {
+  background: var(--color-blue-light);
+  border-color: var(--color-blue-light);
+  box-shadow: 0 4px 15px rgba(37, 99, 235, 0.3);
+  transform: translateY(-2px);
+}
+
+.back-btn svg {
+  width: 16px;
+  height: 16px;
+  transition: transform var(--transition-normal);
+}
+
+.back-btn:hover svg {
+  transform: translateX(-4px);
+}
+
+.auth-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg);
+  padding: 40px;
+  width: 100%;
+  position: relative;
+}
+
+/* Mobile Header (Surgirá apenas no mobile) */
+.mobile-logo-header {
+  display: none;
+  text-align: center;
+  margin-bottom: 24px;
+}
+
+.mobile-logo-img {
+  max-width: 180px; /* Elegant size for the mobile brand logo */
+  height: auto;
+  display: inline-block;
+}
+
+.auth-card-title {
+  font-family: var(--font-title);
+  font-size: 1.6rem;
+  font-weight: 800;
+  color: #ffffff;
+  margin-bottom: 8px;
+  letter-spacing: -0.5px;
+}
+
+.auth-card-subtitle {
+  font-size: 0.9rem;
+  color: #64748b;
+  margin-bottom: 28px;
+}
+
+/* ==========================================================================
+   SLIDING SEGMENTED SWITCHERS (CHIPS DESIGN)
+   ========================================================================== */
+.profile-chips {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-bottom: 28px;
+}
+
+.chip-btn {
+  padding: 6px 16px;
+  font-family: var(--font-title);
+  font-weight: 700;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: #64748b;
+  border: 1px solid var(--border-color);
+  border-radius: 50px;
+  background: transparent;
+  transition: all var(--transition-normal);
+  cursor: pointer;
+}
+
+.chip-btn:hover {
+  color: #ffffff;
+  border-color: rgba(255, 255, 255, 0.15);
+}
+
+.chip-btn.active {
+  background: var(--color-blue-light);
+  border-color: var(--color-blue-light);
+  color: #ffffff;
+  box-shadow: 0 4px 12px rgba(37, 99, 235, 0.25);
+}
+
+.tabs-chips {
+  display: flex;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-sm);
+  padding: 4px;
+  margin-bottom: 28px;
+}
+
+.tab-chip {
+  flex: 1;
+  padding: 10px;
+  font-family: var(--font-title);
+  font-weight: 700;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: #64748b;
+  background: transparent;
+  border: none;
+  border-radius: 6px;
+  text-align: center;
+  cursor: pointer;
+  transition: all var(--transition-normal);
+}
+
+.tab-chip:hover {
+  color: #ffffff;
+}
+
+.tab-chip.active {
+  background: rgba(255, 255, 255, 0.05);
+  color: #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+/* ==========================================================================
+   INPUT FORM FIELD DESIGN (Apple-style sleek)
+   ========================================================================== */
+.form-panel {
+  display: none;
+  animation: formFadeIn 350ms ease-out forwards;
+}
+
+.form-panel.active {
+  display: block;
+}
+
+@keyframes formFadeIn {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.form-group {
+  margin-bottom: 20px;
+  position: relative;
+}
+
+.input-wrapper {
+  position: relative;
+  width: 100%;
+}
+
+.form-input {
+  width: 100%;
+  padding: 16px 16px 16px 48px;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: var(--radius-sm);
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  color: #ffffff;
+  outline: none;
+  transition: all var(--transition-normal);
+}
+
+.form-input:focus {
+  background: rgba(255, 255, 255, 0.03);
+  border-color: var(--color-blue-light);
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
+}
+
+/* Sleek Floating Labels */
+.form-label {
+  position: absolute;
+  top: 50%;
+  left: 48px;
+  transform: translateY(-50%);
+  font-size: 0.95rem;
+  color: #64748b;
+  pointer-events: none;
+  transition: all var(--transition-normal);
+}
+
+.form-input:focus + .form-label,
+.form-input:not(:placeholder-shown) + .form-label {
+  top: 8px;
+  left: 12px;
+  font-size: 0.75rem;
+  color: var(--color-blue-light);
+  background: var(--bg-card); /* Fundo sólido exato da cor do card */
+  padding: 0 6px;
+  border-radius: 4px;
+  transform: translateY(-50%);
+}
+
+/* Icones dos inputs */
+.input-icon {
+  position: absolute;
+  top: 50%;
+  left: 16px;
+  transform: translateY(-50%);
+  color: #64748b;
+  pointer-events: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: color var(--transition-normal);
+}
+
+.form-input:focus ~ .input-icon {
+  color: var(--color-blue-light);
+}
+
+.toggle-password-btn {
+  position: absolute;
+  top: 50%;
+  right: 16px;
+  transform: translateY(-50%);
+  color: #64748b;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  border: none;
+  outline: none;
+  transition: color var(--transition-normal);
+}
+
+.toggle-password-btn:hover {
+  color: #ffffff;
+}
+
+/* Proteção contra o preenchimento automático do Chrome */
+input:-webkit-autofill,
+input:-webkit-autofill:hover, 
+input:-webkit-autofill:focus, 
+input:-webkit-autofill:active {
+  -webkit-box-shadow: 0 0 0 30px var(--bg-card) inset !important;
+  -webkit-text-fill-color: #ffffff !important;
+  transition: background-color 5000s ease-in-out 0s;
+}
+
+/* Erros e Validações */
+.error-msg {
+  font-size: 0.75rem;
+  color: #ef4444;
+  margin-top: 4px;
+  display: none;
+  align-items: center;
+  gap: 4px;
+}
+
+.form-group.has-error .form-input {
+  border-color: #ef4444;
+  box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.15);
+}
+
+.form-group.has-error .error-msg {
+  display: flex;
+}
+
+/* Options Row */
+.options-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+  font-size: 0.85rem;
+}
+
+.remember-me {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  color: #64748b;
+}
+
+.remember-me input {
+  accent-color: var(--color-blue-light);
+  cursor: pointer;
+}
+
+.forgot-link {
+  color: var(--color-blue-light);
+  font-weight: 500;
+  transition: color var(--transition-normal);
+}
+
+.forgot-link:hover {
+  color: #ffffff;
+  text-decoration: underline;
+}
+
+/* ==========================================================================
+   SUBMIT BUTTON & SOCIAL SIMULATION
+   ========================================================================== */
+.form-actions {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 24px;
+}
+
+.btn-submit {
+  width: auto;
+  min-width: 180px;
+  padding: 14px 36px;
+  background: var(--color-blue-light);
+  color: #ffffff;
+  font-family: var(--font-title);
+  font-weight: 700;
+  font-size: 0.9rem;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  border-radius: 50px; /* Pill design */
+  border: none;
+  transition: all var(--transition-normal);
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(37, 99, 235, 0.2);
+}
+
+.btn-submit:hover {
+  background: var(--color-blue-dark);
+  box-shadow: 0 6px 18px rgba(37, 99, 235, 0.3);
+  transform: translateY(-2px);
+}
+
+.divider-row {
+  display: flex;
+  align-items: center;
+  margin: 28px 0;
+  color: #64748b;
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.divider-row::before,
+.divider-row::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--border-color);
+}
+
+.divider-row span {
+  padding: 0 16px;
+}
+
+.social-logins {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.social-btn {
+  padding: 12px;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-sm);
+  color: var(--text-primary);
+  font-family: var(--font-title);
+  font-weight: 700;
+  font-size: 0.8rem;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  transition: all var(--transition-normal);
+  cursor: pointer;
+}
+
+.social-btn:hover {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: rgba(255, 255, 255, 0.15);
+}
+
+.social-btn svg {
+  width: 18px;
+  height: 18px;
+}
+
+/* Hint box */
+.hint-box {
+  margin-top: 20px;
+  padding: 12px 16px;
+  background: rgba(245, 158, 11, 0.06);
+  border: 1px solid rgba(245, 158, 11, 0.15);
+  border-radius: var(--radius-sm);
+  font-size: 0.8rem;
+  color: #f59e0b;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.hint-box code {
+  font-family: monospace;
+  font-size: 0.85rem;
+  background: rgba(0, 0, 0, 0.3);
+  padding: 2px 6px;
+  border-radius: 4px;
+}
+
+/* Admin Restriction Display */
+.admin-only-notice {
+  text-align: center;
+  padding: 24px 0 8px 0;
+  color: #64748b;
+}
+
+.admin-only-notice svg {
+  color: var(--color-gold);
+  margin-bottom: 12px;
+  width: 32px;
+  height: 32px;
+}
+
+.admin-only-notice p {
+  font-size: 0.88rem;
+  line-height: 1.5;
+}
+
+/* ==========================================================================
+   TOAST ALERTS
+   ========================================================================== */
+.toast {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  background: #111827;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-sm);
+  padding: 16px 20px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  z-index: 100;
+  transform: translateY(100px);
+  opacity: 0;
+  transition: all 400ms cubic-bezier(0.16, 1, 0.3, 1);
+  pointer-events: none;
+}
+
+.toast.show {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.toast-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.toast-icon.success { color: #10b981; }
+.toast-icon.error { color: #ef4444; }
+.toast-icon.warning { color: #f59e0b; }
+
+.toast-message {
+  font-size: 0.88rem;
+  color: #ffffff;
+  font-weight: 500;
+}
+
+/* ==========================================================================
+   RESPONSIVE CONTROLS (WCAG / MOBILE LAYOUT)
+   ========================================================================== */
+@media (max-width: 992px) {
+  .cover-pane {
+    display: none; /* Esconde painel da esquerda no mobile */
+  }
+
+  .form-pane {
+    padding: 24px;
+    flex: 1;
+    width: 100%;
+    min-height: 100vh;
+  }
+
+  .mobile-logo-header {
+    display: block; /* Mostra logo no header da auth card */
+  }
+  
+  .auth-card {
+    padding: 32px 24px;
+  }
+}
+
+@media (max-width: 360px) {
+  /* Empilha as opções de lembrar-me e esqueci a senha em telas muito estreitas */
+  .options-row {
+    flex-direction: column !important;
+    gap: 12px !important;
+    align-items: flex-start !important;
+  }
+}
+

@@ -64,37 +64,9 @@ function initNavbarScroll() {
     });
   }
 
-  // Gerenciador de Temas (Dark/Light)
-  const savedTheme = localStorage.getItem("theme") || "light"; // Default light para seguir a identidade do Instagram oficial (Azul Royal & Branco Clean)
-  
-  if (savedTheme === "light") {
-    document.body.classList.remove("dark-theme");
-    if (lightIcon) lightIcon.classList.add("hidden");
-    if (darkIcon) darkIcon.classList.remove("hidden");
-  } else {
-    document.body.classList.add("dark-theme");
-    if (darkIcon) darkIcon.classList.add("hidden");
-    if (lightIcon) lightIcon.classList.remove("hidden");
-  }
-
-  if (themeToggle) {
-    themeToggle.addEventListener("click", () => {
-      const isCurrentlyDark = document.body.classList.contains("dark-theme");
-      if (isCurrentlyDark) {
-        document.body.classList.remove("dark-theme");
-        localStorage.setItem("theme", "light");
-        if (lightIcon) lightIcon.classList.add("hidden");
-        if (darkIcon) darkIcon.classList.remove("hidden");
-        showToast("Modo Claro Ativado");
-      } else {
-        document.body.classList.add("dark-theme");
-        localStorage.setItem("theme", "dark");
-        if (darkIcon) darkIcon.classList.add("hidden");
-        if (lightIcon) lightIcon.classList.remove("hidden");
-        showToast("Modo Escuro Ativado");
-      }
-    });
-  }
+  // Gerenciador de Temas (Tema Claro Forçado)
+  document.body.classList.remove("dark-theme");
+  localStorage.setItem("theme", "light");
 }
 
 /* ==========================================================================

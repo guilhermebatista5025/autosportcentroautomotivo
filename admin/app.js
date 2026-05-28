@@ -15,46 +15,17 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 // ==========================================================================
-// 0. GERENCIADOR DE TEMAS (CLARO / ESCURO) E INTEGRAÇÃO DE GRÁFICOS
+// 0. GERENCIADOR DE TEMAS (TEMA CLARO FORÇADO)
 // ==========================================================================
 function initThemeManager() {
-  const themeToggle = document.getElementById("theme-toggle");
-  const darkIcon = document.getElementById("theme-toggle-dark-icon");
-  const lightIcon = document.getElementById("theme-toggle-light-icon");
-
-  if (!themeToggle) return;
-
-  // Carregar tema preferido
-  const savedTheme = localStorage.getItem("theme") || "dark";
+  // Forçar sempre o belíssimo tema claro institucional de seções brancas
+  document.body.classList.add("light-theme");
+  localStorage.setItem("theme", "light");
   
-  if (savedTheme === "light") {
-    document.body.classList.add("light-theme");
-    if (lightIcon) lightIcon.classList.add("hidden");
-    if (darkIcon) darkIcon.classList.remove("hidden");
-  } else {
-    document.body.classList.remove("light-theme");
-    if (darkIcon) darkIcon.classList.add("hidden");
-    if (lightIcon) lightIcon.classList.remove("hidden");
-  }
-
-  themeToggle.addEventListener("click", () => {
-    const isCurrentlyLight = document.body.classList.contains("light-theme");
-    
-    if (isCurrentlyLight) {
-      document.body.classList.remove("light-theme");
-      localStorage.setItem("theme", "dark");
-      if (darkIcon) darkIcon.classList.add("hidden");
-      if (lightIcon) lightIcon.classList.remove("hidden");
-    } else {
-      document.body.classList.add("light-theme");
-      localStorage.setItem("theme", "light");
-      if (lightIcon) lightIcon.classList.add("hidden");
-      if (darkIcon) darkIcon.classList.remove("hidden");
-    }
-    
-    // Atualizar gráfico de forma espetacular em tempo real!
+  // Atualizar o gráfico em tempo real para o tema claro
+  setTimeout(() => {
     updateChartTheme();
-  });
+  }, 200);
 }
 
 function updateChartTheme() {
