@@ -10,7 +10,7 @@
   <meta name="robots" content="noindex, nofollow">
 
   <!-- Estilos e Design System Otimizado (Princípios UI/UX Pro Max) -->
-  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/style-v2.css">
   
   <style>
     /* Estilos Adicionais Exclusivos para a Página de Agendamento */
@@ -69,6 +69,510 @@
     .simplified-nav-btn svg {
       width: 16px;
       height: 16px;
+    }
+
+    /* ==========================================================================
+       CORREÇÕES CRÍTICAS DE RESPONSIVIDADE E ESTILO (UI/UX PRO MAX)
+       ========================================================================== */
+    /* Padrão Mobile-First: Grade com 1 coluna por padrão (evita qualquer quebra lateral) */
+    .booking-fields-grid {
+      display: grid !important;
+      grid-template-columns: 1fr !important;
+      gap: 16px !important;
+      margin-top: 16px !important;
+      align-items: start !important;
+    }
+
+    /* Apenas em telas de desktop (acima de 900px) os campos ficam lado a lado */
+    @media (min-width: 901px) {
+      .booking-fields-grid {
+        grid-template-columns: repeat(2, 1fr) !important;
+      }
+    }
+
+    @media (max-width: 900px) {
+      /* Reduz padding do card para liberar espaço lateral */
+      .simulator-card {
+        padding: 24px 16px !important;
+      }
+    }
+
+    @media (max-width: 576px) {
+      /* Alinha os botões de voltar/avançar de forma empilhada */
+      .wizard-actions.dual-actions {
+        grid-template-columns: 1fr !important;
+        gap: 8px !important;
+      }
+      .wizard-actions.dual-actions button {
+        width: 100% !important;
+        justify-content: center !important;
+      }
+      /* Melhora o comportamento dos passos na barra de etapas */
+      .step-indicator .step-text {
+        display: none !important;
+      }
+      .step-line {
+        margin-top: -16px !important;
+      }
+      .checkout-stepper {
+        padding: 12px 16px !important;
+        margin-bottom: 24px !important;
+      }
+    }
+
+    @media (max-width: 480px) {
+      /* Reduz e escala a placa Mercosul para que caiba perfeitamente sem vazar */
+      .mercosul-plate-wrapper {
+        max-width: 200px !important;
+        height: 52px !important;
+        border-width: 3px !important;
+      }
+      .mercosul-plate-header {
+        height: 14px !important;
+        font-size: 0.5rem !important;
+        padding: 0 6px !important;
+      }
+      #mercosul-plate-text {
+        font-size: 1.2rem !important;
+        letter-spacing: 3px !important;
+      }
+      
+      /* Corrige a quebra e empilhamento dos sub-métodos de pagamento */
+      .payment-submethod-card {
+        padding: 10px 12px !important;
+      }
+      .sub-info {
+        flex-direction: column !important;
+        align-items: flex-start !important;
+        gap: 4px !important;
+      }
+      .sub-value {
+        font-size: 0.78rem !important;
+      }
+    }
+
+    /* Estilos Premium para a Etapa 2 de Identificação e Cadastro */
+    .booking-fields-stack {
+      display: flex !important;
+      flex-direction: column !important;
+      gap: 20px !important;
+      width: 100% !important;
+      margin-top: 20px !important;
+    }
+    
+    .form-group-premium {
+      display: flex !important;
+      flex-direction: column !important;
+      gap: 8px !important;
+      width: 100% !important;
+    }
+    
+    .form-label-premium {
+      font-family: var(--font-title) !important;
+      font-size: 0.85rem !important;
+      font-weight: 800 !important;
+      color: var(--text-primary) !important;
+      text-transform: uppercase !important;
+      letter-spacing: 0.5px !important;
+    }
+    
+    .form-input-premium {
+      width: 100% !important;
+      height: 52px !important;
+      border: 1.5px solid var(--border-color) !important;
+      border-radius: var(--radius-sm) !important;
+      padding: 0 18px !important;
+      font-size: 0.95rem !important;
+      color: var(--text-primary) !important;
+      background: var(--bg-card) !important;
+      transition: all var(--transition-fast) !important;
+      font-family: var(--font-body) !important;
+    }
+    
+    .form-input-premium:focus {
+      border-color: var(--color-blue) !important;
+      outline: none !important;
+      box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.12) !important;
+      background: var(--bg-card) !important;
+    }
+    
+    .form-input-premium::placeholder {
+      color: var(--text-muted) !important;
+      opacity: 0.6 !important;
+    }
+
+    .form-input-premium[aria-invalid="true"] {
+      border-color: var(--color-red) !important;
+      background: #fff5f5 !important;
+    }
+
+    .dark-theme .form-input-premium[aria-invalid="true"] {
+      background: #2d1a1a !important;
+    }
+    
+    .form-error-premium {
+      font-size: 0.76rem !important;
+      color: var(--color-red) !important;
+      font-weight: 600 !important;
+      display: none;
+      margin-top: 4px !important;
+      animation: fadeInError 0.2s ease-in-out forwards !important;
+    }
+
+    @keyframes fadeInError {
+      from { opacity: 0; transform: translateY(-4px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    
+    .plate-group-premium {
+      display: grid !important;
+      grid-template-columns: 1fr !important;
+      gap: 20px !important;
+      align-items: flex-end !important;
+    }
+    
+    @media (min-width: 601px) {
+      .plate-group-premium {
+        grid-template-columns: 1.2fr 0.8fr !important;
+      }
+    }
+    
+    .plate-visualizer-container {
+      display: flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      width: 100% !important;
+      height: 52px !important;
+    }
+    
+    .mercosul-plate-wrapper-premium {
+      width: 100% !important;
+      max-width: 220px !important;
+      height: 52px !important;
+      background: #ffffff !important;
+      border: 3px solid #000000 !important;
+      border-radius: 8px !important;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12) !important;
+      display: flex !important;
+      flex-direction: column !important;
+      overflow: hidden !important;
+      user-select: none !important;
+      transition: transform var(--transition-fast) !important;
+    }
+
+    .mercosul-plate-wrapper-premium:hover {
+      transform: scale(1.02) !important;
+    }
+    
+    .mercosul-plate-header-premium {
+      background: #002fbe !important;
+      height: 14px !important;
+      width: 100% !important;
+      display: flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      color: #ffffff !important;
+      font-family: var(--font-title) !important;
+      font-size: 0.52rem !important;
+      font-weight: 900 !important;
+      letter-spacing: 1.5px !important;
+      padding: 0 !important;
+      box-shadow: none !important;
+    }
+    
+    .mercosul-plate-body-premium {
+      flex: 1 !important;
+      display: flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      background: #ffffff !important;
+    }
+    
+    .mercosul-plate-body-premium span {
+      font-family: 'Inter', monospace !important;
+      font-size: 1.25rem !important;
+      font-weight: 900 !important;
+      color: #000000 !important;
+      letter-spacing: 4px !important;
+      text-transform: uppercase !important;
+      padding-left: 4px !important;
+      line-height: 1 !important;
+    }
+
+    @media (max-width: 480px) {
+      .mercosul-plate-wrapper-premium {
+        max-width: 200px !important;
+        height: 50px !important;
+        border-width: 2.5px !important;
+      }
+      .mercosul-plate-header-premium {
+        height: 13px !important;
+        font-size: 0.48rem !important;
+      }
+      .mercosul-plate-body-premium span {
+        font-size: 1.15rem !important;
+        letter-spacing: 3px !important;
+      }
+    }
+
+    /* Responsividade e correções de corte do Calendário Web em Telas Menores */
+    @media (max-width: 600px) {
+      .calendar-days-grid {
+        gap: 4px !important;
+      }
+      .calendar-day-circle {
+        width: 34px !important;
+        height: 34px !important;
+        font-size: 0.8rem !important;
+      }
+      .calendar-weekday {
+        font-size: 0.68rem !important;
+        padding: 6px 0 !important;
+      }
+      .calendar-arrow-btn {
+        width: 36px !important;
+        height: 36px !important;
+      }
+      .calendar-picker-body {
+        padding: 12px !important;
+      }
+    }
+
+    /* Estilos Premium para o Seletor de Horários Grelha (Visual de Dashboard) */
+    .hours-grid-premium {
+      display: grid !important;
+      grid-template-columns: repeat(2, 1fr) !important;
+      gap: 10px !important;
+      width: 100% !important;
+      margin-top: 10px !important;
+    }
+    
+    .turn-btn {
+      display: flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      gap: 8px !important;
+      padding: 12px 14px !important;
+      background: var(--bg-card) !important;
+      border: 1.5px solid var(--border-color) !important;
+      border-radius: var(--radius-sm) !important;
+      font-family: var(--font-title) !important;
+      font-weight: 700 !important;
+      font-size: 0.9rem !important;
+      color: var(--text-primary) !important;
+      transition: all var(--transition-fast) !important;
+      min-height: 48px !important;
+      width: 100% !important;
+      cursor: pointer !important;
+    }
+    
+    .turn-btn svg {
+      color: var(--text-muted) !important;
+      transition: color var(--transition-fast) !important;
+    }
+    
+    .turn-btn:hover {
+      border-color: var(--color-blue) !important;
+      background: var(--bg-alt) !important;
+    }
+    
+    .turn-btn.active {
+      border-color: var(--color-blue) !important;
+      background: var(--color-blue) !important;
+      color: #ffffff !important;
+    }
+    
+    .turn-btn.active svg {
+      color: #ffffff !important;
+    }
+
+    @media (max-width: 480px) {
+      .turn-btn {
+        padding: 10px 8px !important;
+        min-height: 42px !important;
+        font-size: 0.8rem !important;
+        gap: 6px !important;
+      }
+    }
+
+    /* Estilização Premium para o Resumo do Orçamento (Step 4 - Receipt Layout) */
+    .simulator-output {
+      background: var(--bg-card) !important;
+      border: 1.5px solid var(--border-color) !important;
+      border-radius: var(--radius-lg) !important;
+      padding: 28px !important;
+      margin-top: 24px !important;
+      display: flex !important;
+      flex-direction: column !important;
+      gap: 24px !important;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04) !important;
+      position: relative !important;
+      overflow: hidden !important;
+    }
+    
+    .simulator-output::before {
+      content: "" !important;
+      position: absolute !important;
+      top: 0 !important;
+      left: 0 !important;
+      width: 100% !important;
+      height: 4px !important;
+      background: linear-gradient(90deg, var(--color-blue) 0%, var(--color-blue-light) 100%) !important;
+    }
+    
+    .price-row {
+      display: flex !important;
+      flex-direction: column !important;
+      align-items: center !important;
+      justify-content: center !important;
+      text-align: center !important;
+      border-bottom: 2.5px dashed var(--border-color) !important;
+      padding-bottom: 24px !important;
+      gap: 8px !important;
+      width: 100% !important;
+    }
+    
+    .price-row span:first-child {
+      font-family: var(--font-title) !important;
+      font-size: 0.85rem !important;
+      font-weight: 800 !important;
+      color: var(--text-muted) !important;
+      text-transform: uppercase !important;
+      letter-spacing: 1.5px !important;
+    }
+    
+    .price-total {
+      font-family: var(--font-title) !important;
+      font-size: 3rem !important;
+      font-weight: 900 !important;
+      color: var(--color-blue) !important;
+      letter-spacing: -1px !important;
+      line-height: 1 !important;
+      margin: 4px 0 !important;
+      text-shadow: 0 4px 20px rgba(29, 78, 216, 0.08) !important;
+    }
+    
+    .payment-plans {
+      display: grid !important;
+      grid-template-columns: repeat(2, 1fr) !important;
+      gap: 20px !important;
+      width: 100% !important;
+    }
+    
+    @media (max-width: 600px) {
+      .payment-plans {
+        grid-template-columns: 1fr !important;
+        gap: 16px !important;
+      }
+      .price-total {
+        font-size: 2.5rem !important;
+      }
+    }
+    
+    .plan-item {
+      display: flex !important;
+      flex-direction: column !important;
+      align-items: flex-start !important;
+      justify-content: space-between !important;
+      background: var(--bg-alt) !important;
+      border: 1.5px solid var(--border-color) !important;
+      border-radius: var(--radius-md) !important;
+      padding: 20px !important;
+      gap: 12px !important;
+      min-height: 108px !important;
+      transition: all var(--transition-normal) !important;
+      width: 100% !important;
+      box-shadow: none !important;
+      text-align: left !important;
+    }
+    
+    .plan-item:hover {
+      border-color: var(--color-blue-light) !important;
+      transform: translateY(-2px) !important;
+      box-shadow: var(--shadow-md) !important;
+      background: var(--bg-card) !important;
+    }
+    
+    /* Placa de desconto PIX */
+    .plan-item:first-child {
+      background: rgba(16, 185, 129, 0.02) !important;
+      border-color: rgba(16, 185, 129, 0.15) !important;
+    }
+    
+    .plan-item:first-child:hover {
+      background: rgba(16, 185, 129, 0.04) !important;
+      border-color: rgba(16, 185, 129, 0.3) !important;
+    }
+    
+    .plan-badge {
+      background: #10b981 !important;
+      color: #ffffff !important;
+      font-size: 0.68rem !important;
+      font-weight: 900 !important;
+      padding: 5px 12px !important;
+      border-radius: var(--radius-full) !important;
+      text-transform: uppercase !important;
+      letter-spacing: 0.5px !important;
+      box-shadow: 0 2px 8px rgba(16, 185, 129, 0.15) !important;
+      display: inline-block !important;
+    }
+    
+    /* Transformar o primeiro span do card de parcelas num badge azul premium */
+    .plan-item:last-child span:first-child {
+      background: rgba(37, 99, 235, 0.08) !important;
+      color: var(--color-blue) !important;
+      font-size: 0.68rem !important;
+      font-weight: 900 !important;
+      padding: 5px 12px !important;
+      border-radius: var(--radius-full) !important;
+      text-transform: uppercase !important;
+      letter-spacing: 0.5px !important;
+      display: inline-block !important;
+      border: 1px solid rgba(37, 99, 235, 0.15) !important;
+    }
+    
+    .plan-value {
+      font-family: var(--font-title) !important;
+      font-size: 1.6rem !important;
+      font-weight: 900 !important;
+      color: var(--text-primary) !important;
+      letter-spacing: -0.5px !important;
+      line-height: 1.2 !important;
+    }
+    
+    #pix-price {
+      color: #10b981 !important;
+    }
+    
+    /* Layout da linha "12x de R$ X" */
+    .plan-item:last-child span:nth-child(2) {
+      font-size: 0.9rem !important;
+      color: var(--text-muted) !important;
+      font-weight: 700 !important;
+      display: flex !important;
+      flex-direction: row !important;
+      align-items: baseline !important;
+      gap: 6px !important;
+    }
+    
+    #card-price {
+      font-size: 1.6rem !important;
+      font-weight: 900 !important;
+      color: var(--text-primary) !important;
+      letter-spacing: -0.5px !important;
+    }
+
+    /* Animação de Levitação Premium para o Mascote */
+    @keyframes floatMascot {
+      0% { transform: translateY(0px) rotate(0deg); }
+      50% { transform: translateY(-6px) rotate(1deg); }
+      100% { transform: translateY(0px) rotate(0deg); }
+    }
+
+    /* Pulsação do indicador de status online */
+    @keyframes pulse-dot {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.6; transform: scale(1.35); }
     }
   </style>
 </head>
@@ -132,7 +636,80 @@
         
         <!-- Formulário de Agendamento Otimizado (4-Step Engine) -->
         <div class="simulator-card reveal-on-scroll" id="scheduling-container" style="max-width: 100%; margin: 0; width: 100%;">
-        
+          
+          <!-- Painel do Mascote Auto Bot de Boas-vindas (Premium) -->
+          <div class="mascot-booking-welcome" style="
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            margin-bottom: 28px;
+            background: linear-gradient(135deg, #1e3a8a 0%, #1d4ed8 80%, #2563eb 100%);
+            border: none;
+            padding: 20px 24px;
+            border-radius: 18px;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 10px 32px rgba(29, 78, 216, 0.3);
+          ">
+            <!-- Glow radial atrás do mascote -->
+            <div style="
+              position: absolute;
+              left: 0; top: 50%;
+              transform: translateY(-50%);
+              width: 180px; height: 180px;
+              background: radial-gradient(circle, rgba(96,165,250,0.4) 0%, transparent 70%);
+              pointer-events: none;
+              z-index: 0;
+            "></div>
+
+            <!-- Mascote Grande -->
+            <img
+              src="../img/mascote-2.png"
+              alt="Auto Bot - Mascote Auto Sport"
+              style="
+                width: 110px;
+                height: auto;
+                object-fit: contain;
+                flex-shrink: 0;
+                animation: floatMascot 4s ease-in-out infinite;
+                filter: drop-shadow(0 6px 14px rgba(0,0,0,0.25));
+                position: relative;
+                z-index: 1;
+              "
+            >
+
+            <!-- Texto -->
+            <div style="position: relative; z-index: 1;">
+              <!-- Status online -->
+              <div style="display: flex; align-items: center; gap: 7px; margin-bottom: 6px;">
+                <span style="
+                  display: inline-block;
+                  width: 8px; height: 8px;
+                  background: #4ade80;
+                  border-radius: 50%;
+                  box-shadow: 0 0 6px rgba(74,222,128,0.8);
+                  animation: pulse-dot 2s ease-in-out infinite;
+                "></span>
+                <span style="font-size: 0.7rem; font-weight: 700; color: #93c5fd; text-transform: uppercase; letter-spacing: 1.2px;">Auto Bot Online</span>
+              </div>
+              <h4 style="
+                font-family: var(--font-title);
+                font-size: 1.1rem;
+                font-weight: 900;
+                color: #ffffff;
+                margin-bottom: 6px;
+                margin-top: 0;
+                letter-spacing: 0.2px;
+              ">Olá! Sou o Auto Bot 👋</h4>
+              <p style="
+                font-size: 0.82rem;
+                color: #bfdbfe;
+                margin: 0;
+                line-height: 1.55;
+              ">Vou te guiar na simulação do orçamento e no agendamento do seu veículo.<br><strong style="color: #ffffff;">Vamos começar?</strong></p>
+            </div>
+          </div>
+
           <!-- Stepper Wizard Premium (4 Etapas) -->
           <div class="checkout-stepper" aria-label="Progresso da Reserva">
             <div class="step-indicator active" id="step-indicator-1">
@@ -209,51 +786,57 @@
                 </div>
               </div>
 
-              <!-- Dados de Cadastro -->
+              <!-- Dados de Cadastro Redesenhados do Zero (UI/UX Pro Max) -->
               <div class="sim-group" style="margin-top: 24px;">
                 <span class="sim-group-title">
                   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
-                  3. Identificação do Proprietário & Veículo
+                  3. Identificação do Proprietário & Veículo (Atualizado)
                 </span>
                 
-                <div class="booking-fields-grid">
-                  <div class="form-field">
-                    <label for="client-name">Nome Completo *</label>
-                    <input type="text" id="client-name" class="form-input" placeholder="Ex: João da Silva..." required autocomplete="name">
-                    <span id="client-name-error" class="form-error" role="alert">Insira seu nome completo.</span>
+                <div class="booking-fields-stack">
+                  <!-- Campo: Nome Completo -->
+                  <div class="form-group-premium">
+                    <label for="client-name" class="form-label-premium">Nome Completo *</label>
+                    <input type="text" id="client-name" class="form-input-premium" placeholder="Digite seu nome completo..." required autocomplete="name">
+                    <span id="client-name-error" class="form-error-premium" role="alert">Insira seu nome completo.</span>
                   </div>
 
-                  <div class="form-field">
-                    <label for="client-phone">WhatsApp para Contato *</label>
-                    <input type="tel" id="client-phone" class="form-input" placeholder="Ex: (27) 99880-3770..." required autocomplete="tel">
-                    <span id="client-phone-error" class="form-error" role="alert">Insira um número de WhatsApp válido.</span>
+                  <!-- Campo: WhatsApp -->
+                  <div class="form-group-premium">
+                    <label for="client-phone" class="form-label-premium">WhatsApp para Contato *</label>
+                    <input type="tel" id="client-phone" class="form-input-premium" placeholder="Ex: (27) 99880-3770..." required autocomplete="tel">
+                    <span id="client-phone-error" class="form-error-premium" role="alert">Insira um número de WhatsApp válido.</span>
                   </div>
 
-                  <div class="form-field">
-                    <label for="client-vehicle">Modelo e Marca do Veículo *</label>
-                    <input type="text" id="client-vehicle" class="form-input" placeholder="Ex: Toyota Corolla Sedan..." required>
-                    <span id="client-vehicle-error" class="form-error" role="alert">Insira o modelo do seu veículo.</span>
+                  <!-- Campo: Modelo do Carro -->
+                  <div class="form-group-premium">
+                    <label for="client-vehicle" class="form-label-premium">Modelo e Marca do Veículo *</label>
+                    <input type="text" id="client-vehicle" class="form-input-premium" placeholder="Ex: Toyota Corolla Sedan..." required>
+                    <span id="client-vehicle-error" class="form-error-premium" role="alert">Insira o modelo do seu veículo.</span>
                   </div>
 
-                  <div class="form-field">
-                    <label for="client-plate">Placa do Veículo (Opcional)</label>
-                    <input type="text" id="client-plate" class="form-input" placeholder="Ex: PPU-5090..." style="text-transform: uppercase;" maxlength="8">
-                    <!-- Placa Mercosul Dinâmica Premium -->
-                    <div class="mercosul-plate-wrapper" id="mercosul-plate-display" aria-hidden="true">
-                      <div class="mercosul-plate-header">
-                        <span class="mercosul-header-flag">🇧🇷</span>
-                        <span class="mercosul-header-country">BRASIL</span>
-                        <span class="mercosul-header-logo">⚙️</span>
-                      </div>
-                      <div class="mercosul-plate-body">
-                        <span id="mercosul-plate-text">SUA PLACA</span>
+                  <!-- Linha Híbrida: Placa do Carro + Visualizador Mercosul -->
+                  <div class="form-group-premium plate-group-premium">
+                    <div style="display: flex; flex-direction: column; gap: 8px; width: 100%;">
+                      <label for="client-plate" class="form-label-premium">Placa do Veículo (Opcional)</label>
+                      <input type="text" id="client-plate" class="form-input-premium" placeholder="Ex: PPU-5090..." style="text-transform: uppercase;" maxlength="8">
+                    </div>
+                    <div class="plate-visualizer-container">
+                      <div class="mercosul-plate-wrapper-premium" id="mercosul-plate-display" aria-hidden="true">
+                        <div class="mercosul-plate-header-premium">
+                          <span>🇧🇷 BRASIL</span>
+                        </div>
+                        <div class="mercosul-plate-body-premium">
+                          <span id="mercosul-plate-text">SUA PLACA</span>
+                        </div>
                       </div>
                     </div>
                   </div>
 
-                  <div class="form-field full-width">
-                    <label for="client-cpf">CPF (Opcional - Ficha CRM)</label>
-                    <input type="text" id="client-cpf" class="form-input" placeholder="Ex: 123.456.789-00...">
+                  <!-- Campo: CPF -->
+                  <div class="form-group-premium">
+                    <label for="client-cpf" class="form-label-premium">CPF (Opcional - Ficha CRM)</label>
+                    <input type="text" id="client-cpf" class="form-input-premium" placeholder="Ex: 123.456.789-00...">
                   </div>
                 </div>
               </div>
@@ -310,17 +893,43 @@
                     </div>
                   </div>
 
-                  <!-- Painel do Período -->
+                  <!-- Painel do Horário (Atualizado com seletor de horas específicas) -->
                   <div class="turn-picker-body">
-                    <h4>Período do Atendimento</h4>
-                    <button type="button" class="turn-btn active" data-turn="Manhã (08h - 12h)" role="radio" aria-checked="true">
-                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line></svg>
-                      Manhã (08h às 12h)
-                    </button>
-                    <button type="button" class="turn-btn" data-turn="Tarde (13h - 18h)" role="radio" aria-checked="false">
-                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
-                      Tarde (13h às 18h)
-                    </button>
+                    <h4>Horários Disponíveis</h4>
+                    <div class="hours-grid-premium">
+                      <button type="button" class="turn-btn active" data-turn="09:00" role="radio" aria-checked="true">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="width:16px; height:16px;"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+                        09:00
+                      </button>
+                      <button type="button" class="turn-btn" data-turn="10:00" role="radio" aria-checked="false">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="width:16px; height:16px;"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+                        10:00
+                      </button>
+                      <button type="button" class="turn-btn" data-turn="11:00" role="radio" aria-checked="false">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="width:16px; height:16px;"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+                        11:00
+                      </button>
+                      <button type="button" class="turn-btn" data-turn="13:00" role="radio" aria-checked="false">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="width:16px; height:16px;"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+                        13:00
+                      </button>
+                      <button type="button" class="turn-btn" data-turn="14:00" role="radio" aria-checked="false">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="width:16px; height:16px;"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+                        14:00
+                      </button>
+                      <button type="button" class="turn-btn" data-turn="15:00" role="radio" aria-checked="false">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="width:16px; height:16px;"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+                        15:00
+                      </button>
+                      <button type="button" class="turn-btn" data-turn="16:00" role="radio" aria-checked="false">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="width:16px; height:16px;"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+                        16:00
+                      </button>
+                      <button type="button" class="turn-btn" data-turn="17:00" role="radio" aria-checked="false">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="width:16px; height:16px;"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+                        17:00
+                      </button>
+                    </div>
                   </div>
 
                 </div>
@@ -500,7 +1109,7 @@
         <h4>Onde Estamos</h4>
         <div class="map-container">
           <iframe 
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1m4!2s-19.3908!3d-40.0678!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xb611c0f0d2c3df%3A0xe10ad5c0a0c4f87!2sLinhares%2C%20ES!5e0!3m2!1spt-BR!2sbr!4v1700000000000!5m2!1spt-BR!2sbr" 
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3763.3163134991623!2d-40.063148999999996!3d-19.3987344!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xb625fd8aa112cf%3A0xfbbb3baca4d246ec!2sAuto%20Sport%20Centro%20Est%C3%A9tica%20Automotivo%20Linhares!5e0!3m2!1spt-BR!2sbr!4v1780017445562!5m2!1spt-BR!2sbr" 
             width="100%" 
             height="100%" 
             style="border:0;" 
